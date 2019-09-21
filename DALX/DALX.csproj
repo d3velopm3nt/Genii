@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7CA67D70-439B-4550-9B70-7778263DD2B5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DALX</RootNamespace>
+    <AssemblyName>DALX</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DALC4NET, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\JayJay\source\repos\Innotrack Library\Innotrack.Data\bin\Debug\DALC4NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Innotrack.Logger">
+      <HintPath>..\..\..\Source Code\Innotrack Library\Innotrack.Logger\bin\Debug\Innotrack.Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\DataMapping.cs" />
+    <Compile Include="Attributes\DataNamesAttribute.cs" />
+    <Compile Include="Core\BaseEntity.cs" />
+    <Compile Include="Core\ConfigHelper.cs" />
+    <Compile Include="Core\CoreHelper.cs" />
+    <Compile Include="Core\DataHelper.cs" />
+    <Compile Include="Core\FileHelper.cs" />
+    <Compile Include="Core\IEntity.cs" />
+    <Compile Include="Core\Sql\Filters\FilterHelper.cs" />
+    <Compile Include="Core\Sql\Filters\QueryFilterCollection.cs" />
+    <Compile Include="Core\Sql\DBFormatHelper.cs" />
+    <Compile Include="Core\Sql\OperatorHelper.cs" />
+    <Compile Include="Core\Sql\QueryBuilder.cs" />
+    <Compile Include="Core\Sql\Filters\QueryFilter.cs" />
+    <Compile Include="Core\Sql\QueryHelper.cs" />
+    <Compile Include="Core\Sql\DBQueryManager.cs" />
+    <Compile Include="Core\Enums.cs" />
+    <Compile Include="Core\Sql\Sorters\QuerySorter.cs" />
+    <Compile Include="Core\Sql\Sorters\SorterCollection.cs" />
+    <Compile Include="Core\Sql\SqlHelper.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Mapping\AttributeHelper.cs" />
+    <Compile Include="Mapping\DataMapper.cs" />
+    <Compile Include="Mapping\ParameterMapper.cs" />
+    <Compile Include="Mapping\PropertyMapHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Logging\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

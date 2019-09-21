@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AA816441-BF01-4721-A26A-ABA56045E4E8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GENX</RootNamespace>
+    <AssemblyName>GENX</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DALC4NET">
+      <HintPath>..\..\..\..\..\Development\DALC4NET\DALC4NET\bin\Debug\DALC4NET.dll</HintPath>
+    </Reference>
+    <Reference Include="DALX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DALX\bin\Debug\DALX.dll</HintPath>
+    </Reference>
+    <Reference Include="Innotrack.Logger">
+      <HintPath>..\..\..\Source Code\Innotrack Library\Innotrack.Logger\bin\Debug\Innotrack.Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Generator.cs" />
+    <Compile Include="Core\Enums.cs" />
+    <Compile Include="Core\FileX.cs" />
+    <Compile Include="Interfaces\IXFile.cs" />
+    <Compile Include="Core\XFileHelper.cs" />
+    <Compile Include="Generator\Builder\BuilderHelper.cs" />
+    <Compile Include="Generator\Builder\BuilderManager.cs" />
+    <Compile Include="Generator\Connection\ConnectionFile.cs" />
+    <Compile Include="Generator\Connection\ConnectionHelper.cs" />
+    <Compile Include="Generator\Language\LanguageHelper.cs" />
+    <Compile Include="Generator\Language\LanguageList.cs" />
+    <Compile Include="Generator\Library\Library.cs" />
+    <Compile Include="Generator\Library\LibraryHelper.cs" />
+    <Compile Include="Generator\Project\ProjectFile.cs" />
+    <Compile Include="Generator\Project\ProjectHelper.cs" />
+    <Compile Include="Generator\Snippet\SnippetFile.cs" />
+    <Compile Include="Generator\Snippet\SnippetHelper.cs" />
+    <Compile Include="Generator\Solution\SolutionHelper.cs" />
+    <Compile Include="Generator\Table\Column\ColumnPropety.cs" />
+    <Compile Include="Generator\Table\TableEntity.cs" />
+    <Compile Include="Generator\Table\TableHelper.cs" />
+    <Compile Include="Generator\Tag\GenTag.cs" />
+    <Compile Include="Generator\Tag\TagFile.cs" />
+    <Compile Include="Generator\Tag\TagHelper.cs" />
+    <Compile Include="Generator\Template\TemplateBuilder.cs" />
+    <Compile Include="Generator\Template\TemplateFile.cs" />
+    <Compile Include="Generator\Template\TemplateHelper.cs" />
+    <Compile Include="Generator\Template\TemplateType.cs" />
+    <Compile Include="Interfaces\IGenXControl.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
