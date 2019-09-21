@@ -18,27 +18,33 @@ public BaseEntity(DBHelper dbHelper){}
 public BaseEntity(object id, DBHelper dBHelper = null){} 
 
 Methods
-CREATE METHODS
+
 public virtual bool Create();
 
-READ METHODS
 public virtual List<T> Read(int SelectTop = 0)
+  
 public virtual List<T> Read(List<QueryFilter> filters, int SelectTop = 0)
+  
 public virtual List<T> Read(QuerySorter sorter, int SelectTop = 0)
+  
 public virtual List<T> Read(List<QueryFilter> filters, SorterCollection sorters, int SelectTop = 0)
+  
 public virtual List<T> Read(List<QueryFilter> filters, QuerySorter sorter, int SelectTop = 0)
 
-Update();
 public bool Update(DBParameterCollection parameters = null, QueryFilterCollection filters = null)
+
 public bool Update(string column, string value)
 
-Delete();
  public bool Delete()
+ 
  public bool DeleteAll()
   
 HELPER METHODS
+
 public int Count()
+
 public List<T> Distinct(string identifier)
+  
 public bool Exist(string column, string value)
 
 # SETUP
