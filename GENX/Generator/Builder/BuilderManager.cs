@@ -30,8 +30,9 @@ namespace GENX.Generator.Builder
                 {
                     foreach (TableEntity table in projectFile.TableList)
                     {
-                       BuilderHelper.BuildEntityTemplateFile(template, table,projectFile.ProjectName).Generate(template.TargetPath + @"\" + table.TableName + template.FileName);
-                       form.GetUpdatedMessageStatus(template.FileName, table.TableName, "File generated successfully");
+                        template.TargetPath.Replace("[Entity]", table.TableName);
+                        BuilderHelper.BuildEntityTemplateFile(template, table, projectFile.ProjectName).Generate(template.TargetPath + @"\" + table.TableName + BuilderHelper.CheckFilePostFix(template.FileName));
+                        form.GetUpdatedMessageStatus(template.FileName, table.TableName, "File generated successfully");
                     }
                 }
             }

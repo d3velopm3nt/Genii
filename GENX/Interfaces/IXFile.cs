@@ -1,4 +1,5 @@
 ﻿using GENX.Generator.Connection;
+using GENX.Generator.Snippet;
 using GENX.Generator.Tag;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace GENX.Interfaces
          string FileText { get; set; }
          string FileExtension { get; set; }
         List<GenTag> GenTagList { get; set; }
+        List<SnippetFile> Snippets { get; set; }
         #endregion
 
         #region Methods

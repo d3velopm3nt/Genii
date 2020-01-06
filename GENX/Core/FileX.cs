@@ -30,6 +30,7 @@ namespace GENX.Generator
         public string FileText { get; set; }
         public string FileExtension { get; set; }
         public List<GenTag> GenTagList { get; set; }
+        public List<Snippet.SnippetFile> Snippets { get; set; }
         #endregion
 
         #region Constructors
@@ -78,7 +79,7 @@ namespace GENX.Generator
             this.SolutionName = file.SolutionName;
             this.ProjectName = file.ProjectName;
             this.FullPath = file.FullPath;
-            return this;
+            return this; 
         }
 
         public IXFile Load(string path)
