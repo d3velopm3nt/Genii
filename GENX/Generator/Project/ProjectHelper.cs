@@ -2,6 +2,7 @@
 
 using GENX.Generator.Connection;
 using GENX.Generator.Library;
+using GENX.Generator.Snippet;
 using GENX.Generator.Solution;
 using GENX.Generator.Table;
 using GENX.Generator.Template;
@@ -109,6 +110,7 @@ namespace GENX.Generator.Project
                 //    string line = "";
                 //    while ((line = reader.ReadLine()) != null)
                 //    {
+                projectFile.Snippets = SnippetHelper.GetProjectSnippets(path);
                 if (File.Exists(fullpath))
                 {
                     var lines = File.ReadAllLines(fullpath);

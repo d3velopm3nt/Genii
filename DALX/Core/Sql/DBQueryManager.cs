@@ -1,9 +1,8 @@
 ﻿using DALC4NET;
 using DALX.Core.Sql.Filters;
 using DALX.Core.Sql.Sorters;
-using Innotrack.Logger;
 using DALX.Mapping;
-using Innotrack.Logger.Configuration;
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -46,17 +45,17 @@ namespace DALX.Core.Sql
             try
             {
             string query = QueryBuilder.BuildInsertQuery(tableName, ParameterMapper<T>.Map(obj));
-                LoggerX.WriteDebugLog($"Insert Query: {query}");
+             
                 return ExecuteDbQuery(query);
             }
             catch(SqlException ex)
             {
-                LoggerX.WriteErrorLog(ex);
+ 
                 return false;
             }
             catch(Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+              
                 return false;
             }
         }
@@ -64,7 +63,7 @@ namespace DALX.Core.Sql
         public static bool Delete<T>(T obj, string tableName, List<QueryFilter> collection) where T : class, new()
         {
             string query = QueryBuilder.BuildDeleteQuery(tableName, collection);
-            LoggerX.WriteDebugLog($"Delete Query: {query}");
+    
             return ExecuteDbQuery(query);
         }
 
@@ -73,20 +72,20 @@ namespace DALX.Core.Sql
             try
             {
             string query = QueryBuilder.BuildSelectQuery(tableName, filters,sorters,selectTop);
-                LoggerX.WriteDebugLog($"Read Query: {query}");
+        
                 DataTable table = DBHelper.ExecuteDataTable(query);
             return QueryHelper.BuildEntityList<T>(table);
 
             }
             catch (SqlException ex)
             {
-                LoggerX.WriteErrorLog(ex);
+            
                 
             }
             catch (Exception ex)
             {
 
-                LoggerX.WriteErrorLog(ex);
+           
             }
             return null;
         }
@@ -104,18 +103,18 @@ namespace DALX.Core.Sql
             try
             {
                 string query = QueryBuilder.BuildUpdateQuery(tableName, parameters, filters);
-                LoggerX.WriteDebugLog($"Update Query: {query}");
+              
                   
             return ExecuteDbQuery(query);
             }
             catch (SqlException ex)
             {
-                LoggerX.WriteErrorLog(ex);
+                
                 return false;
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+               
                 return false;
             }
         }
@@ -125,13 +124,13 @@ namespace DALX.Core.Sql
             try
             {
                 string query = $"UPDATE {tableName} SET {column}='{value}' WHERE ID={Id}";
-                LoggerX.WriteDebugLog("Debug: " + query);
+               
                 DBHelper.ExecuteNonQuery(query);
                 return true;
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+               
                 return false;
             }
         }

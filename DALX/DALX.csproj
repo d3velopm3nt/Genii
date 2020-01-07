@@ -37,9 +37,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\JayJay\source\repos\Innotrack Library\Innotrack.Data\bin\Debug\DALC4NET.dll</HintPath>
     </Reference>
-    <Reference Include="Innotrack.Logger">
-      <HintPath>..\..\..\Source Code\Innotrack Library\Innotrack.Logger\bin\Debug\Innotrack.Logger.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
