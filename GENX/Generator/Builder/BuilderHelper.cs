@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GENX.Interfaces;
+using GENX.Generator.Snippet;
+using GENX.Generator.Helpers;
 
 namespace GENX.Generator.Builder
 {
@@ -24,16 +26,17 @@ namespace GENX.Generator.Builder
             file.Build(template);
             file.ProjectName = projectName;
             file.Load(template.FullPath);
-            string tempText = ReplaceTagsTextInTemplate(file, table.TableName);
+            string tempText = ReplaceTagsTextInTemplate(file);
+            file = SnippetHelper.CheckSnippetProperties(file, Table);
+            file = MappingHelper.CheckMappingProperties(file, Table);
+            //if (file.FileName.Contains("Linked"))
+            //    tempText += ReplaceLinkedProperties(table.TableName, template.FileText);
 
-            if (file.FileName.Contains("Linked"))
-                tempText += ReplaceLinkedProperties(table.TableName, template.FileText);
-
-            file.FileText = tempText;
+            //file.FileText = tempText;
             return file;
         }
 
-        public static string CheckFilePostFix(string filename   )
+        public static string CheckFilePostFix(string filename)
         {
             if (filename.StartsWith("I"))
                 filename = filename.Substring(1);
@@ -41,50 +44,15 @@ namespace GENX.Generator.Builder
             return filename;
         }
 
-       //private static string ConvertFileNameToSingleName(string fileName)
-       // {
-       //     if (fileName.EndsWith("ies"))
-       //         return fileName = fileName.Replace("ies", "y");
-       //     else if (fileName.EndsWith("s"))
-       //         return fileName = fileName.Replace("es", "e"); 
-       // }
-
-        private static string ReplaceTagsTextInTemplate(IXFile file, string tableName)
+        private static string ReplaceTagsTextInTemplate(IXFile file)
         {
             StringBuilder sBuilder = new StringBuilder(file.FileText);
             sBuilder.Replace("[Project]", file.ProjectName);
-            sBuilder.Replace("[Entity]", tableName);
-            sBuilder.Replace("[Properties]", AddProperties());
+            sBuilder.Replace("[Entity]", Table.TableName);
             sBuilder.Replace("[DateGenerated]", DateTime.Now.ToString());
-            sBuilder.Replace("[IEntity]", $"I{tableName}");
-            
+            sBuilder.Replace("[IEntity]", $"I{Table.TableName}");       
             return sBuilder.ToString();
         }
-
-        private static void CheckSnippetProperties(IXFile file)
-        {
-            if(file.FileText.Contains("[Properties]"))
-            foreach(Snippet.SnippetFile snippet in file.Snippets)
-            {
-                    if (file.FileText.Contains($"[Properties][{snippet.FileName}]"))
-                    {
-
-                    }
-            }
-        }
-
-        private static string AddProperties()
-        {
-            string newText = "";
-            foreach (ColumnPropety column in Table.ColumnList)
-            {
-                if (!CoreHelper.BasePropertyList().Any(x => x.Contains(column.ColumnName)))
-                    newText += "[DataMapping(true)] public " + column.DataType + " " + column.ColumnName + " {get;set;} " + Environment.NewLine;
-            }
-            return newText;
-        }
-
-
 
         private static string ReplaceLinkedProperties(string _table, string _text)
         {

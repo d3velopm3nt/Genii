@@ -6,11 +6,11 @@ using DALX.Core.Sql;
 using DALX.Mapping;
 using DALX.Core.Sql.Filters;
 using System.Data;
-using DALC4NET;
 using DALX.Attributes;
 using DALX.Core.Sql.Sorters;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using DALX.Core.Sql.Parameters;
 
 namespace DALX.Core
 {
@@ -21,7 +21,7 @@ namespace DALX.Core
         [DataMapping(true)] public object ID { get; set; }
         //public DateTime CreatedDateTime { get; set; }
         //public DateTime ModifiedDateTime { get; set; }
-        public DBHelper DbHelper { get; set; }
+        public SqlDbConnection DbHelper { get; set; }
         public string LinkedServer { get; set; }
         public string EntityTableName { get; set; }
         #endregion
@@ -36,26 +36,25 @@ namespace DALX.Core
 
         }
 
-        public BaseEntity(DBHelper dBHelper = null)
+        public BaseEntity(SqlDbConnection dBHelper = null)
         {
             if (dBHelper != null)
             {
                 this.DbHelper = dBHelper;
                 DBQueryManager.DBHelper = this.DbHelper;
-                QueryBuilder.LinkedServer = this.DbHelper.LinkedServer;
             }
             this.EntityTableName = this.GetType().Name;
 
         }
 
-        public BaseEntity(object id, DBHelper dBHelper = null)
+        public BaseEntity(object id, SqlDbConnection dBHelper = null)
         {
             this.ID = id;
             if (dBHelper != null)
             {
                 this.DbHelper = dBHelper;
                 DBQueryManager.DBHelper = this.DbHelper;
-                QueryBuilder.LinkedServer = this.DbHelper.LinkedServer;
+               // QueryBuilder.LinkedServer = this.DbHelper.LinkedServer;
             }
             this.EntityTableName = this.GetType().Name;
 
@@ -97,8 +96,7 @@ namespace DALX.Core
         {
             try
             {
-
-                return DBQueryManager.Read<T>(EntityTableName, null, null, SelectTop);
+                return  DBQueryManager.Read<T>(EntityTableName, null, null, SelectTop);
             }
             catch (Exception ex)
             {
@@ -119,7 +117,7 @@ namespace DALX.Core
         {
             try
             {
-                return DBQueryManager.Read<T>(EntityTableName, filters, sorters, SelectTop);
+                return  DBQueryManager.Read<T>(EntityTableName, filters, sorters, SelectTop);
             }
             catch (Exception ex)
             {
@@ -184,7 +182,7 @@ namespace DALX.Core
                 var filters = new List<QueryFilter>();
                 filters.Add(filter);
 
-                return DBQueryManager.Read<T>(EntityTableName, filters, sorters, SelectTop);
+                return  DBQueryManager.Read<T>(EntityTableName, filters, sorters, SelectTop);
             }
             catch (Exception ex)
             {
@@ -430,7 +428,7 @@ namespace DALX.Core
                     var sorters = new SorterCollection();
                     sorters.Add(sorter);
 
-                    list = DBQueryManager.Read<T>(EntityTableName, filters, sorters, SelectTop);
+                    list =  DBQueryManager.Read<T>(EntityTableName, filters, sorters, SelectTop);
                 });
                 return list;
             }
@@ -459,7 +457,7 @@ namespace DALX.Core
 
                     var filters = new List<QueryFilter>();
                     filters.Add(filter);
-
+                    
                     list = DBQueryManager.Read<T>(EntityTableName, filters, sorters, SelectTop);
                 });
                 return list;
@@ -526,14 +524,6 @@ namespace DALX.Core
 
 
 
-        public async void GetEntityAsync()
-        {
-            await Task.Run(() =>
-            {
-                if (!DBQueryManager.GetEntity(this, ID))
-                    this.ID = null;
-            });
-        }
         /// <summary>
         /// This method will update the entity with the new changes
         /// </summary>

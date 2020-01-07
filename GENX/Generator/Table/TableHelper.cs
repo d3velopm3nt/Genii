@@ -1,4 +1,4 @@
-﻿using DALC4NET;
+﻿
 using DALX.Core.Sql;
 using GENX.Generator.Table.Column;
 using System;
@@ -25,7 +25,7 @@ namespace GENX.Generator.Table
                 columns = new List<ColumnPropety>();
             else
                 columns.Clear();
-            foreach (DataRow row in DALX.Core.CoreHelper.DBHelper.ExecuteDataTable(query).Rows)
+            foreach (DataRow row in DALX.Core.CoreHelper.DBHelper.GetDataTable(query).Rows)
             {
                 columns.Add(new ColumnPropety(
                         row[0].ToString(),  //Column Name

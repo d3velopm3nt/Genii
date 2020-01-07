@@ -14,9 +14,9 @@ namespace DALX.Core.Sql
         public static int GetTableCount(string table)
         {
             string query = "Select count(*) from " + table;
-            var result = CoreHelper.DBHelper.ExecuteDataSet(query);
+            var result = CoreHelper.DBHelper.GetDataView(query);
             if (result != null)
-                return Convert.ToInt32(result.Tables[0].DefaultView[0].Row[0]);
+                return Convert.ToInt32(result[0]);
             else
                 return 0;
         }
@@ -27,10 +27,10 @@ namespace DALX.Core.Sql
             try
             {
                 string query = "Select * FROM INFORMATION_SCHEMA.TABLES";
-                var result = CoreHelper.DBHelper.ExecuteDataSet(query).Tables[0].DefaultView;
-                for (int i = 0; i < result.Count; i++)
+                var result = CoreHelper.DBHelper.GetDataTable(query);
+                for (int i = 0; i < result.Rows.Count; i++)
                 {
-                    string table = result[i].Row["TABLE_NAME"].ToString();
+                    string table = result.Rows[i]["TABLE_NAME"].ToString();
                     list.Add(table);
                 }
             return list;
@@ -50,7 +50,7 @@ namespace DALX.Core.Sql
             var list = new List<string>();
             try
             {
-                var result = CoreHelper.DBHelper.ExecuteDataSet(query).Tables[0].DefaultView;
+                var result = CoreHelper.DBHelper.GetDataView(query);
                 for (int i = 0; i < result.Count; i++)
                 {
                     string table = result[i].Row["TABLE_NAME"].ToString();
@@ -71,7 +71,7 @@ namespace DALX.Core.Sql
             var list = new List<string>();
             try
             {
-                var result = CoreHelper.DBHelper.ExecuteDataSet(query).Tables[0].DefaultView;
+                var result = CoreHelper.DBHelper.GetDataView(query);
                 for (int i = 0; i < result.Count; i++)
                 {
                     string table = result[i].Row["COLUMN_NAME"].ToString();

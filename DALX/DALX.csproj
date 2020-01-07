@@ -33,10 +33,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DALC4NET, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\JayJay\source\repos\Innotrack Library\Innotrack.Data\bin\Debug\DALC4NET.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -51,12 +47,15 @@
   <ItemGroup>
     <Compile Include="Attributes\DataMapping.cs" />
     <Compile Include="Attributes\DataNamesAttribute.cs" />
+    <Compile Include="Core\AppConfig.cs" />
     <Compile Include="Core\BaseEntity.cs" />
     <Compile Include="Core\ConfigHelper.cs" />
     <Compile Include="Core\CoreHelper.cs" />
     <Compile Include="Core\DataHelper.cs" />
     <Compile Include="Core\FileHelper.cs" />
     <Compile Include="Core\IEntity.cs" />
+    <Compile Include="Core\Sql\Parameters\DBParameter.cs" />
+    <Compile Include="Core\Sql\Parameters\DBParameterCollection.cs" />
     <Compile Include="Core\Sql\Filters\FilterHelper.cs" />
     <Compile Include="Core\Sql\Filters\QueryFilterCollection.cs" />
     <Compile Include="Core\Sql\DBFormatHelper.cs" />
@@ -68,6 +67,7 @@
     <Compile Include="Core\Enums.cs" />
     <Compile Include="Core\Sql\Sorters\QuerySorter.cs" />
     <Compile Include="Core\Sql\Sorters\SorterCollection.cs" />
+    <Compile Include="Core\Sql\SqlDbConnection.cs" />
     <Compile Include="Core\Sql\SqlHelper.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Mapping\AttributeHelper.cs" />

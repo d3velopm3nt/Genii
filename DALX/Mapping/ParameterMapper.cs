@@ -1,5 +1,6 @@
-﻿using DALC4NET;
+﻿
 using DALX.Attributes;
+using DALX.Core.Sql.Parameters;
 using System;
 using System.Collections.Generic;
 using System.Data;

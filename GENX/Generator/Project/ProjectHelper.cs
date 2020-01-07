@@ -6,7 +6,6 @@ using GENX.Generator.Snippet;
 using GENX.Generator.Solution;
 using GENX.Generator.Table;
 using GENX.Generator.Template;
-using Innotrack.Logger;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +27,8 @@ namespace GENX.Generator.Project
                 return path;
             }
         }
+
+       public static List<SnippetFile> Snippets { get; set; }
 
         #endregion
 
@@ -105,12 +106,7 @@ namespace GENX.Generator.Project
             try
             {
                 string fullpath = path + @"\ProjectConfig.genx";
-                //using (StreamReader reader = new StreamReader(fullpath))
-                //{
-                //    string line = "";
-                //    while ((line = reader.ReadLine()) != null)
-                //    {
-                projectFile.Snippets = SnippetHelper.GetProjectSnippets(path);
+                Snippets =  SnippetHelper.GetProjectSnippets(path);
                 if (File.Exists(fullpath))
                 {
                     var lines = File.ReadAllLines(fullpath);
@@ -163,7 +159,7 @@ namespace GENX.Generator.Project
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+               
             }
             return projectFile;
         }

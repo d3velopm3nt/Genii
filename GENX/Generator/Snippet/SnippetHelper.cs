@@ -5,16 +5,18 @@ using GENX.Generator.Tag;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GENX.Interfaces;
 using System.IO;
+using GENX.Generator.Table.Column;
+using GENX.Generator.Table;
+using GENX.Generator.Project;
 
 namespace GENX.Generator.Snippet
 {
    public static class SnippetHelper
     {
         #region Properties
+        static TableEntity Table { get; set; }
         internal static string GetFullPath
         {
             get
@@ -48,12 +50,47 @@ namespace GENX.Generator.Snippet
             {
                 SnippetFile snippet = new SnippetFile();
                 snippet.FileText = File.ReadAllText(file);
+                snippet.FileName = file.Substring(file.LastIndexOf("\\") + 1);
+                snippet.FileName = snippet.FileName.Replace(snippet.FileName.Substring(snippet.FileName.LastIndexOf(".")),"");
                 snippets.Add(snippet);
             }
             return snippets;
         }
 
-       
+        public static IXFile CheckSnippetProperties(IXFile file,TableEntity table)
+        {
+            Table = table;
+            if (file.FileText.Contains("[Properties::"))
+                foreach (SnippetFile snippet in ProjectHelper.Snippets)
+                {
+                    string fullPropSnipString = $"[Properties::{snippet.FileName}]";
+                    if (file.FileText.Contains(fullPropSnipString))
+                    {
+                      file.FileText =  file.FileText.Replace(fullPropSnipString, AddProperties(snippet));
+                      break;
+                    }
+                }
+
+            return file;
+        }
+
+        private static string AddProperties(SnippetFile snippet)
+        {
+            string newText = "";
+            string snippetText = snippet.FileText;
+            foreach (ColumnPropety column in Table.ColumnList)
+            {
+                if (!CoreHelper.BasePropertyList().Any(x => x.Contains(column.ColumnName)))
+                {
+                    
+                    newText += snippetText
+                        .Replace("[DataType]", column.DataType)
+                        .Replace("[Property]", column.ColumnName) + Environment.NewLine;
+                }
+            }
+            return newText;
+        }
+
 
     }
 }

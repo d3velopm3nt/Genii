@@ -1,5 +1,6 @@
-﻿using DALC4NET;
+﻿
 using DALX.Core.Sql.Filters;
+using DALX.Core.Sql.Parameters;
 using DALX.Core.Sql.Sorters;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace DALX.Core.Sql
     public static class QueryBuilder
     {
         #region Properties
-        public static LinkedServer LinkedServer { get; set; }
+
         #endregion
 
         #region Builder Methods 
@@ -59,8 +60,8 @@ namespace DALX.Core.Sql
         /// <returns></returns>
         internal static string BuildSelectOneQuery(string tableName, object ID)
         {
-            if (LinkedServer != null)
-                tableName = LinkedServer.GetLinkedTable(tableName);
+            //if (LinkedServer != null)
+            //    tableName = LinkedServer.GetLinkedTable(tableName);
             tableName = $"[{tableName}]";
             string query = "SELECT * FROM " + tableName;
             query += " WHERE ID = '" + ID + "'";

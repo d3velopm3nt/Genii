@@ -1,5 +1,6 @@
-﻿using DALC4NET;
+﻿using DALX.Core.Sql;
 using DALX.Core.Sql.Filters;
+using DALX.Core.Sql.Parameters;
 using DALX.Core.Sql.Sorters;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,11 @@ namespace DALX.Core
         //DateTime CreatedDateTime { get; set; }
         //DateTime ModifiedDateTime { get; set; }
         string Status { get; set; }
-         DBHelper DbHelper { get; set; }
+         SqlDbConnection DbHelper { get; set; }
 
         //CRUD
         bool Create();
-        List<T> Read(QueryFilter filter, QuerySorter sorter, int SelectTop = 0);
+        List<T> Read(QueryFilter filter, QuerySorter sorter, int    SelectTop = 0);
 
         List<T> Read(List<QueryFilter> filterCollection=null, SorterCollection sorters = null, int SelectTop = 0);
        // List<T> Read(QueryFilter filter=null, SorterCollection sorter = null, int SelectTop = 0);

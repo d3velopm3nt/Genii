@@ -1,5 +1,6 @@
-﻿using DALC4NET;
+﻿
 using DALX.Core.Sql.Filters;
+using DALX.Core.Sql.Parameters;
 using DALX.Core.Sql.Sorters;
 using DALX.Mapping;
 
@@ -9,20 +10,21 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DALX.Core.Sql
 {
     public static class DBQueryManager
     {
         #region Properties
-        private static DBHelper helper;
-        public static DBHelper DBHelper
+        private static SqlDbConnection helper;
+        public static SqlDbConnection DBHelper
         {
 
             get
             {
                 if (helper == null)
-                helper = new DBHelper();
+                helper = new SqlDbConnection();
                 return helper;
             }
             set
@@ -34,7 +36,7 @@ namespace DALX.Core.Sql
             }
         }
 
-        public static LinkedServer LinkedServer { get; set; }
+       
 
         #endregion
 
@@ -73,7 +75,7 @@ namespace DALX.Core.Sql
             {
             string query = QueryBuilder.BuildSelectQuery(tableName, filters,sorters,selectTop);
         
-                DataTable table = DBHelper.ExecuteDataTable(query);
+                DataTable table =  DBHelper.GetDataTable(query);
             return QueryHelper.BuildEntityList<T>(table);
 
             }
@@ -94,15 +96,14 @@ namespace DALX.Core.Sql
 
         public static bool GetEntity<T>(this T entity,object ID) where T : class, new()
         {
-           return entity.LoadEntity<T>(ID);
-            
+           return  entity.LoadEntity<T>(ID);           
         }
 
         public static bool Update<T>(string tableName,DBParameterCollection parameters=null, List<QueryFilter> filters =null) where T : class, new()
         {
             try
             {
-                string query = QueryBuilder.BuildUpdateQuery(tableName, parameters, filters);
+                string query =  QueryBuilder.BuildUpdateQuery(tableName, parameters, filters);
               
                   
             return ExecuteDbQuery(query);
@@ -119,13 +120,13 @@ namespace DALX.Core.Sql
             }
         }
 
-        public static bool Update(string tableName,string column, string value,int Id)
+        public static  bool  Update(string tableName,string column, string value,int Id)
         {
             try
             {
                 string query = $"UPDATE {tableName} SET {column}='{value}' WHERE ID={Id}";
                
-                DBHelper.ExecuteNonQuery(query);
+               DBHelper.ExecuteQuery(query);
                 return true;
             }
             catch (Exception ex)
@@ -137,19 +138,19 @@ namespace DALX.Core.Sql
 
         public static List<T> SelectQuery<T>(string query) where T :class,new()
         {
-            return QueryHelper.BuildEntityList<T>(CoreHelper.DBHelper.ExecuteDataTable(query));
+            return QueryHelper.BuildEntityList<T>(CoreHelper.DBHelper.GetDataTable(query));
         }
 
         public static List<T> Distinct<T>(string tablename,string identifier) where T : class, new()
         {
             string query = $"SELECT * FROM (SELECT *, ROW_NUMBER() OVER(PARTITION BY {identifier} ORDER BY ID DESC) rownumber FROM [dbo].{tablename}) a WHERE rownumber = 1; ";
-            return QueryHelper.BuildEntityList<T>(CoreHelper.DBHelper.ExecuteDataTable(query));
+            return QueryHelper.BuildEntityList<T>(CoreHelper.DBHelper.GetDataTable(query));
         }
 
         public static int CheckIfExist( string column,string value,string tableName)
         {
             string query = $"SELECT ID FROM {tableName} WHERE {column}={value}";
-            var result = DBHelper.ExecuteDataTable(query);
+            var result =  DBHelper.GetDataTable(query);
             if (result == null || result.Rows.Count == 0)
                 return 0;
             else
@@ -170,15 +171,15 @@ namespace DALX.Core.Sql
         #region Private Methods
         private static bool ExecuteDbQuery(string query)
         {
-            int result = DBHelper.ExecuteNonQuery(query);
-            return result == 1 ? true : false;
+            bool result =  DBHelper.ExecuteQuery(query);
+            return result;
         }
 
         private static bool LoadEntity<T>(this T entity, object ID) where T : class, new()
         {
             string query = QueryBuilder.BuildSelectOneQuery(entity.GetType().Name, ID);
 
-            var row = DBHelper.ExecuteDataTable(query);
+            var row = DBHelper.GetDataTable(query);
             if (row.Rows.Count > 0)
             {
                 QueryHelper.BuildEntity<T>(entity, row.Rows[0]);

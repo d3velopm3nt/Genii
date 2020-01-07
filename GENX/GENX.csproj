@@ -31,15 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DALC4NET">
-      <HintPath>..\..\..\..\..\Development\DALC4NET\DALC4NET\bin\Debug\DALC4NET.dll</HintPath>
-    </Reference>
     <Reference Include="DALX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DALX\bin\Debug\DALX.dll</HintPath>
-    </Reference>
-    <Reference Include="Innotrack.Logger">
-      <HintPath>..\..\..\Source Code\Innotrack Library\Innotrack.Logger\bin\Debug\Innotrack.Logger.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,6 +48,7 @@
     <Compile Include="Core\Generator.cs" />
     <Compile Include="Core\Enums.cs" />
     <Compile Include="Core\FileX.cs" />
+    <Compile Include="Generator\Helpers\MappingHelper.cs" />
     <Compile Include="Interfaces\IXFile.cs" />
     <Compile Include="Core\XFileHelper.cs" />
     <Compile Include="Generator\Builder\BuilderHelper.cs" />

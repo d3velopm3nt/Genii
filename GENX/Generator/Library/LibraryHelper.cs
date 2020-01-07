@@ -10,7 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GENX.Interfaces;
-using Innotrack.Logger;
 
 namespace GENX.Generator.Library
 {
@@ -41,7 +40,7 @@ namespace GENX.Generator.Library
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+               
             }
 
         }

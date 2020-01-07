@@ -1,4 +1,5 @@
-﻿using DALC4NET;
+﻿
+using DALX.Core.Sql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,30 +42,13 @@ namespace DALX.Core
         }
 
 
-        private static DBHelper dBHelper;
-        public static DBHelper DBHelper
+        private static SqlDbConnection dBHelper;
+        public static SqlDbConnection DBHelper
         {
             get
             {
-                if (dBHelper == null || ConnectionString != dBHelper.ConnectionString)
-                {
-                    if (ConnectionString == null || ConnectionString == "")
-                    {
-                        if (ConnectionStringName != null && ConnectionStringName != "")
-                            dBHelper = new DBHelper(ConnectionStringName);
-                        else
-                            dBHelper = new DBHelper();
-                        ConnectionString = dBHelper.ConnectionString;
-                    }
-                    else
-                    {
-                        if (DBProvider == null || DBProvider.Equals(""))
-                            dBHelper = new DBHelper(ConnectionString, "System.Data.SqlClient");
-                        else
-                            dBHelper = new DBHelper(ConnectionString, DBProvider);
-
-                    }
-                }
+                if (dBHelper == null)
+                    dBHelper = new SqlDbConnection();
 
                 return dBHelper;
 
@@ -85,6 +69,15 @@ namespace DALX.Core
             {
                 "ID",
                 "Status"
+            };
+        }
+
+        public static List<string> IgnoreList()
+        {
+            return new List<string>()
+            {
+                "CreatedDate",
+                "UpdatedDate"
             };
         }
         
