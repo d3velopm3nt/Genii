@@ -289,8 +289,7 @@ namespace DALX_UI.UserControls
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            
+        {           
             this.builderManager.GenerateTemplateTableFiles(this);
         }
         #endregion

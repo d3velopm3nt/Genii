@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GENX.Interfaces;
+using System.IO;
 
 namespace GENX.Generator.Snippet
 {
@@ -36,6 +37,20 @@ namespace GENX.Generator.Snippet
             snippet.GenTagList = TagHelper.GetTagsInText(file.FileText);
 
             return snippet;
+        }
+
+
+        public static List<SnippetFile> GetProjectSnippets(string path)
+        {
+            List<SnippetFile> snippets = new List<SnippetFile>();
+            var files = Directory.GetFiles(path + "\\Snippets" );
+            foreach( var file in files)
+            {
+                SnippetFile snippet = new SnippetFile();
+                snippet.FileText = File.ReadAllText(file);
+                snippets.Add(snippet);
+            }
+            return snippets;
         }
 
        

@@ -63,7 +63,7 @@ namespace DALX_UI.Forms
                    
                 }
                 else if (xType == 3)
-                    FileHelper.WriteToFile(frmMain.BuildCurrentPath()+ @"\"+ txtFolderName.Text ,"##Date Createad: " + DateTime.Now);
+                    FileHelper.WriteToFile(frmMain.BuildCurrentPath()+ @"\"+ txtFolderName.Text ,"//Date Createad: " + DateTime.Now);
 
                 this.Close();
             }

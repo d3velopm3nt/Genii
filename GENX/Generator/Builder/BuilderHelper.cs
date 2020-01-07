@@ -33,18 +33,47 @@ namespace GENX.Generator.Builder
             return file;
         }
 
+        public static string CheckFilePostFix(string filename   )
+        {
+            if (filename.StartsWith("I"))
+                filename = filename.Substring(1);
+
+            return filename;
+        }
+
+       //private static string ConvertFileNameToSingleName(string fileName)
+       // {
+       //     if (fileName.EndsWith("ies"))
+       //         return fileName = fileName.Replace("ies", "y");
+       //     else if (fileName.EndsWith("s"))
+       //         return fileName = fileName.Replace("es", "e"); 
+       // }
+
         private static string ReplaceTagsTextInTemplate(IXFile file, string tableName)
         {
             StringBuilder sBuilder = new StringBuilder(file.FileText);
             sBuilder.Replace("[Project]", file.ProjectName);
             sBuilder.Replace("[Entity]", tableName);
-            sBuilder.Replace("[Properties]", AddEntityProperties());
+            sBuilder.Replace("[Properties]", AddProperties());
             sBuilder.Replace("[DateGenerated]", DateTime.Now.ToString());
-
+            sBuilder.Replace("[IEntity]", $"I{tableName}");
+            
             return sBuilder.ToString();
         }
 
-        private static string AddEntityProperties()
+        private static void CheckSnippetProperties(IXFile file)
+        {
+            if(file.FileText.Contains("[Properties]"))
+            foreach(Snippet.SnippetFile snippet in file.Snippets)
+            {
+                    if (file.FileText.Contains($"[Properties][{snippet.FileName}]"))
+                    {
+
+                    }
+            }
+        }
+
+        private static string AddProperties()
         {
             string newText = "";
             foreach (ColumnPropety column in Table.ColumnList)

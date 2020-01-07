@@ -1,5 +1,5 @@
 ﻿
-using Innotrack.Logger;
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -37,7 +37,7 @@ namespace DALX.Core.Sql
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+               
                 throw new Exception(ex.Message);
             }
             
@@ -60,7 +60,7 @@ namespace DALX.Core.Sql
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+              
                 throw new Exception(ex.Message);
             }
         }
@@ -81,7 +81,7 @@ namespace DALX.Core.Sql
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+              
                 throw new Exception(ex.Message);
             }
         }

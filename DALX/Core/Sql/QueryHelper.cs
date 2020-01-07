@@ -1,7 +1,6 @@
 ﻿using DALC4NET;
 using DALX.Core.Sql.Filters;
 using DALX.Core.Sql.Sorters;
-using Innotrack.Logger;
 using DALX.Mapping;
 using System;
 using System.Collections.Generic;
@@ -64,7 +63,7 @@ namespace DALX.Core.Sql
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+                
                 return null;
             }
         }
@@ -79,7 +78,7 @@ namespace DALX.Core.Sql
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+              
                 return null;
             }
         }

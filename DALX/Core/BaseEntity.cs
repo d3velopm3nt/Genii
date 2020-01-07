@@ -8,7 +8,6 @@ using DALX.Core.Sql.Filters;
 using System.Data;
 using DALC4NET;
 using DALX.Attributes;
-using Innotrack.Logger;
 using DALX.Core.Sql.Sorters;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -86,7 +85,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+               
                 throw new Exception(ex.Message);
 
             }
@@ -103,7 +102,6 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
                 throw new Exception(ex.Message);
             }
         }
@@ -125,7 +123,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+              
                 throw new Exception(ex.Message);
             }
         }
@@ -143,7 +141,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+               
                 throw new Exception(ex.Message);
             }
         }
@@ -165,7 +163,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+         
                 throw new Exception(ex.Message);
             }
         }
@@ -190,7 +188,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+                
                 throw new Exception(ex.Message);
             }
         }
@@ -211,7 +209,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+  
                 throw new Exception(ex.Message);
             }
         }
@@ -232,7 +230,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+             
                 throw new Exception(ex.Message);
             }
         }
@@ -280,7 +278,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+             
                 return false;
                 //throw new Exception(ex.Message);
             }
@@ -339,7 +337,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+              
                 throw new Exception(ex.Message);
 
             }
@@ -360,7 +358,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+                
                 return null;
                 //throw new Exception(ex.Message);
             }
@@ -386,7 +384,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+             
                 throw new Exception(ex.Message);
             }
 
@@ -410,7 +408,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+            
                 throw new Exception(ex.Message);
             }
 
@@ -438,7 +436,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+              
                 throw new Exception(ex.Message);
             }
         }
@@ -468,7 +466,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+               
                 throw new Exception(ex.Message);
             }
         }
@@ -494,7 +492,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+               
                 throw new Exception(ex.Message);
             }
         }
@@ -520,7 +518,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+              
                 throw new Exception(ex.Message);
             }
         }
@@ -576,7 +574,7 @@ namespace DALX.Core
             }
             catch (Exception ex)
             {
-                LoggerX.WriteErrorLog(ex);
+               
                 return false;
                 //throw new Exception(ex.Message);
             }

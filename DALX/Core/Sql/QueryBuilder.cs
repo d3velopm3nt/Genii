@@ -1,7 +1,6 @@
 ﻿using DALC4NET;
 using DALX.Core.Sql.Filters;
 using DALX.Core.Sql.Sorters;
-using Innotrack.Logger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
