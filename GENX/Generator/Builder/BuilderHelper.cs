@@ -26,7 +26,8 @@ namespace GENX.Generator.Builder
             file.Build(template);
             file.ProjectName = projectName;
             file.Load(template.FullPath);
-            string tempText = ReplaceTagsTextInTemplate(file);
+            file.FileText = ReplaceTagsTextInTemplate(file);
+
             file = SnippetHelper.CheckSnippetProperties(file, Table);
             file = MappingHelper.CheckMappingProperties(file, Table);
             //if (file.FileName.Contains("Linked"))

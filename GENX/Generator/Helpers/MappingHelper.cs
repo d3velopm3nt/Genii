@@ -57,7 +57,7 @@ namespace GENX.Generator.Helpers
                 {
                     newText += snippetText
                         .Replace("[Property]", column.ColumnName)
-                       .Replace("[MapObject]", mapObject);
+                       .Replace("[MapObject]", mapObject) + Environment.NewLine;
                 }
             }
             return newText;

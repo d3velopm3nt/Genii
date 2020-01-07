@@ -1,10 +1,21 @@
 //Date Createad: 2020/01/07 10:41:05
-public class [Entity]Request
+public class TestTableRequest
 {
+	public Guid Id {get;set;}
+public string Name {get;set;}
+public string Description {get;set;}
+public string Email {get;set;}
+public string Password {get;set;}
+
 	
-	public [Entity]Request([Entity] model )
+	public TestTableRequest(TestTable model )
 	{
-		this.Id = [MapProperty];this.Name = [MapProperty];this.Description = [MapProperty];this.Email = [MapProperty];this.Password = [MapProperty];
+		this.Id = model.Id;
+this.Name = model.Name;
+this.Description = model.Description;
+this.Email = model.Email;
+this.Password = model.Password;
+
 	}
 
 }
