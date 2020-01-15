@@ -1,6 +1,7 @@
 ﻿
 using DALX.Core.Sql;
 using GENX.Generator.Table.Column;
+using GENX.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,9 +19,9 @@ namespace GENX.Generator.Table
 
         #region Methods
         private static List<ColumnPropety> columns;
-        public static List<ColumnPropety> GetColumnPropertyList(string table)
+        public static List<ColumnPropety> GetColumnPropertyList(TableEntity table, IXFile file)
         {
-            string query = "Select COLUMN_NAME,DATA_TYPE,COLUMN_DEFAULT from INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + table + "'";
+            string query = "Select COLUMN_NAME,DATA_TYPE,COLUMN_DEFAULT from INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='" + table.TableName + "'";
             if (columns == null)
                 columns = new List<ColumnPropety>();
             else
@@ -30,8 +31,11 @@ namespace GENX.Generator.Table
                 columns.Add(new ColumnPropety(
                         row[0].ToString(),  //Column Name
                         row[1].ToString(),  //Data Type
-                        row[2].ToString()   //Default Value
-                        ));
+                        row[2].ToString(),  //Default Value
+                       table.Relationships.Contains(row[0].ToString()) ? true : false,
+                        //CheckIfPropertyLinked(table.Relationships, row[0].ToString()),
+                        file
+                        )) ; ;
             }
             return columns;
         }

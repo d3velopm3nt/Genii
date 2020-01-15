@@ -1,4 +1,5 @@
 ﻿using GENX.Generator.Table.Column;
+using GENX.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,15 @@ namespace GENX.Generator.Table
     {
         #region Properties
         public string TableName { get; set; }
+        public List<string> Relationships { get; set; }
+        public IXFile File;
         private List<ColumnPropety> columns;
         public List<ColumnPropety> ColumnList
         {
             get
             {
                // if(columns== null)
-                columns = TableHelper.GetColumnPropertyList(TableName);
+                columns = TableHelper.GetColumnPropertyList(this,File);
 
                 return columns;
             }

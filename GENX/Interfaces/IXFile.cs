@@ -20,8 +20,12 @@ namespace GENX.Interfaces
          string Description { get; set; }
          string FileText { get; set; }
          string FileExtension { get; set; }
+
+        string TargetPath { get; set; }
         List<GenTag> GenTagList { get; set; }
         List<SnippetFile> Snippets { get; set; }
+
+        string GetDataType(string dbType);
         #endregion
 
         #region Methods

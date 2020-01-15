@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GENX.Files;
+using GENX.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,24 +12,42 @@ namespace GENX.Generator.Language
     {
         public static LanguageList GetProgrammingLangauage(string extension)
         {
-            LanguageList language  = LanguageList.CShaprp;
+            LanguageList language  = LanguageList.CSHARP;
             switch (extension)
             {
                 case "js":
-                    language = LanguageList.JavaScript;
+                    language = LanguageList.JAVASCRIPT;
                     break;
                 case "cs":
-                    language = LanguageList.CShaprp;
+                    language = LanguageList.CSHARP;
                     break;
                 case "cshtml":
-                    language = LanguageList.csHtml;
+                    language = LanguageList.CSHTML;
                     break; 
                 case "css":
-                    language = LanguageList.Css;
+                    language = LanguageList.CSS;
+                    break;
+                case "ts":
+                    language = LanguageList.TYPESCRIPT;
+                    break;
+            }
+            return language;
+        }
+
+        public static IXFile GetFileFromExtention(IXFile file)
+        {
+            switch(GetProgrammingLangauage(file.FileExtension))
+            {
+                case LanguageList.CSHARP:
+                    file = (CSharpFile)file;
+                    break;
+                    
+                case LanguageList.TYPESCRIPT:
+                    file = (TypescriptFile)file;
                     break;
             }
 
-            return language;
+            return file;
         }
     }
 }

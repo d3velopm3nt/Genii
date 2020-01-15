@@ -8,10 +8,11 @@ namespace GENX.Generator.Language
 {
     public enum  LanguageList
     {
-        CShaprp,
-        JavaScript,
-        csHtml,
-        Css
+        CSHARP,
+        JAVASCRIPT,
+        CSHTML,
+        CSS,
+        TYPESCRIPT
 
     }
 }

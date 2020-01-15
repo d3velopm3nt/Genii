@@ -17,6 +17,8 @@ namespace GENX.Generator
         public string FullPath { get; set; }
         public string FileName { get; set; } = "";
 
+        public string TargetPath { get; set; }
+
         public string FriendlyName
         {
             get
@@ -84,8 +86,12 @@ namespace GENX.Generator
 
         public IXFile Load(string path)
         {
-            this.FileText = FileHelper.ReadFile(this.FullPath);
             return this;
+        }
+
+        public virtual string GetDataType(string dbType)
+        {
+            return "";
         }
 
         #endregion

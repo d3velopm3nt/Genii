@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GENX.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +12,13 @@ namespace GENX.Generator.Table.Column
         #region Properties
         public string ColumnName { get; set; }
         public string dbType { get; set; }
+        public bool IsLinkedProperty { get; set; }
+        private IXFile _file;
         public string DataType
         {
             get
             {
-                return TableHelper.GetDataTypeFromDbType(dbType);
+                return _file.GetDataType(dbType);
             }
         }
         public string DefaultValue { get; set; }
@@ -26,11 +29,14 @@ namespace GENX.Generator.Table.Column
         {
 
         }
-        public  ColumnPropety(string columnName,string dataType,string defaultValue)
+        public  ColumnPropety(string columnName,string dataType,string defaultValue,bool isLinked, IXFile file)
         {
             this.ColumnName = columnName;
             this.dbType = dataType;
             this.DefaultValue = defaultValue;
+            this._file = file;
+            this.IsLinkedProperty = isLinked;
+            
         }
         #endregion
     }

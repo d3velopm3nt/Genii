@@ -11,27 +11,29 @@ using System.Text;
 using GENX.Interfaces;
 using GENX.Generator.Snippet;
 using GENX.Generator.Helpers;
+using GENX.Files;
 
 namespace GENX.Generator.Builder
 {
     public class BuilderHelper
     {
-        private static List<GenTag> tagFiles { get; set; }
-        private static IXFile IFile { get; set; }
+
         static TableEntity Table { get; set; }
-        public static IXFile BuildEntityTemplateFile(TemplateFile template, TableEntity table, string projectName)
+        public static IXFile BuildEntityTemplateFile(IXFile template, TableEntity table, string projectName)
         {
             Table = table;
             IXFile file = new TemplateFile();
+
             file.Build(template);
             file.ProjectName = projectName;
             file.Load(template.FullPath);
+            
             file.FileText = ReplaceTagsTextInTemplate(file);
 
             file = SnippetHelper.CheckSnippetProperties(file, Table);
             file = MappingHelper.CheckMappingProperties(file, Table);
-            //if (file.FileName.Contains("Linked"))
-            //    tempText += ReplaceLinkedProperties(table.TableName, template.FileText);
+            //    tempText += ReplaceLinkedProperties(table.TableName, temp
+            //if (file.FileName.Contains("Linked"))late.FileText);
 
             //file.FileText = tempText;
             return file;
@@ -60,7 +62,7 @@ namespace GENX.Generator.Builder
             string returnText = "";
             foreach (string table in SqlHelper.SelectTableRelationships(_table))
             {
-                returnText += _text.Replace("[LinkedEntity]", table) + Environment.NewLine;
+                returnText += _text.Replace("[LinkedProperty]", table) + Environment.NewLine;
             }
             return returnText;
         }
