@@ -1,0 +1,4 @@
+
+#Property->public [DataType] [Property] {get;set;}
+
+#LinkedProperty->public [Property] [Property] {get;set;}
