@@ -62,7 +62,7 @@ namespace GENX.Generator
         #endregion
         #region Methods
 
-        public IXFile Build(IXFile file)
+        public virtual IXFile Build(IXFile file)
         {
             return BuildFileX(file);
         }

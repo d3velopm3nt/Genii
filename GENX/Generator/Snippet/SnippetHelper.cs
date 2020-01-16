@@ -81,9 +81,10 @@ namespace GENX.Generator.Snippet
             string snippetText = snippet.FileText;
             foreach (ColumnPropety column in Table.ColumnList)
             {
+                string propertyType = column.IsLinkedProperty ? SnippetContants.LinkedProperty : SnippetContants.Property;
                 if (!CoreHelper.BasePropertyList().Any(x => x.Contains(column.ColumnName)))
                 {
-                        newText += GetPropertySnippetText(snippetText,column.IsLinkedProperty)
+                        newText += GetSnippetText(snippetText, propertyType)
                             .Replace("[DataType]", column.DataType)
                             .Replace("[Property]", column.ColumnName) + Environment.NewLine;
                 }
@@ -91,17 +92,28 @@ namespace GENX.Generator.Snippet
             return newText;
         }
 
-        private static string GetPropertySnippetText(string text,bool isLinkedProperty)
+        private static string GetSnippetText(string text,string snippetName)
         {
-            string propertyType = isLinkedProperty ? SnippetContants.LinkedProperty : SnippetContants.Property;
-            if (!text.Contains(propertyType))
+            bool snippetStarted = false;
+            if (!text.Contains(snippetName))
                 return text;
             else
             {
                 string[] lines = text.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                 foreach (var line in lines)
-                    if (line.Contains(propertyType))
-                        text = line.Replace(propertyType, "");                
+                {
+                    if (line.Contains(SnippetContants.SnippetEnd))
+                        return text;
+                    else if (snippetStarted)
+                        text += line;
+                    else if (line.Contains(snippetName + SnippetContants.SnippetStart))
+                    {
+                        text = line.Replace(snippetName, "");
+                        snippetStarted = true;
+                    }
+                    
+                   
+                }
                 return text;
             }
         }
