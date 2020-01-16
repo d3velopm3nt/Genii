@@ -49,8 +49,10 @@
     <Compile Include="Core\Enums.cs" />
     <Compile Include="Core\FileX.cs" />
     <Compile Include="Extensions\ExtensionConstants.cs" />
+    <Compile Include="Extensions\ExtensionHelper.cs" />
     <Compile Include="Extensions\ExtensionLine.cs" />
     <Compile Include="Extensions\ExtensionFile.cs" />
+    <Compile Include="Extensions\ExtensionManager.cs" />
     <Compile Include="Files\CSharpFile.cs" />
     <Compile Include="Files\TypescriptFile.cs" />
     <Compile Include="Generator\Helpers\MappingHelper.cs" />

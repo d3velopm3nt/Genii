@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GENX.Extensions
 {
-   public class ExtensionFile : FileX
+   public class ExtensionFile 
     {
         public string FilePath { get; set; }
         public List<ExtensionLine> Extensions { get; set; }
@@ -19,16 +19,7 @@ namespace GENX.Extensions
 
         }
 
-        public override IXFile Build(IXFile file)
-        {
-            file = base.BuildFileX(file);
-
-            GetExtetions(file.FileText);
-
-            return file;
-        }
-
-        private void GetExtetions(string text)
+        public void BuildExtensions(string text)
         {
             string[] lines = XFileHelper.GetAllLines(text);
 

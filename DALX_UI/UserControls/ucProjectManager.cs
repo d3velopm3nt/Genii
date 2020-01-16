@@ -9,6 +9,7 @@ using GENX.Generator.Template;
 using GENX.Generator.Table;
 using GENX.Generator.Builder;
 using GENX.Interfaces;
+using GENX.Extensions;
 
 namespace DALX_UI.UserControls
 {
@@ -21,6 +22,8 @@ namespace DALX_UI.UserControls
         private ucSQLConnection SQLConnection { get; set; }
         private ucDatabaseViewer DatabaseViewer { get; set; }
         public ProjectFile ProjectFile { get; set; }
+
+        public List<ExtensionFile> Extensions { get; set; }
         public bool hasChanges { get; set; }
         public int totalChanges { get; set; }
         public string currentPath { get; set; }
@@ -45,10 +48,10 @@ namespace DALX_UI.UserControls
 
         #region Helper Methods
         public void LoadManager()
-        {
-           
+        {          
             //Load ProjectFile from projectConfig.gex file
             LoadProjectConfig();
+           this.Extensions = ExtensionManager.LoadExtensions(ProjectFile.Path + @"\Extensions.genx");
             builderManager = new BuilderManager(this.ProjectFile);
             //Load SQL Connection control
             if (this.SQLConnection == null)

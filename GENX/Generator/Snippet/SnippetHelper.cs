@@ -92,7 +92,7 @@ namespace GENX.Generator.Snippet
             return newText;
         }
 
-        private static string GetSnippetText(string text,string snippetName)
+        public static string GetSnippetText(string text,string snippetName)
         {
             bool snippetStarted = false;
             if (!text.Contains(snippetName))

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace GENX.Extensions
 {
-   public static     class ExtensionConstants
+   public static class ExtensionConstants
     {
         public static string Path = "##Path";
+        public static string ExtensionDelimiter = "##END";
     }
 }
