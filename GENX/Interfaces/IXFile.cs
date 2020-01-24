@@ -20,6 +20,7 @@ namespace GENX.Interfaces
          string Description { get; set; }
          string FileText { get; set; }
          string FileExtension { get; set; }
+        string CommentLine { get;}
 
         string TargetPath { get; set; }
         List<GenTag> GenTagList { get; set; }

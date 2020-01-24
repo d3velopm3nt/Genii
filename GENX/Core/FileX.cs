@@ -17,6 +17,8 @@ namespace GENX.Generator
         public string FullPath { get; set; }
         public string FileName { get; set; } = "";
 
+        public virtual string CommentLine { get;  }
+
         public string TargetPath { get; set; }
 
         public string FriendlyName

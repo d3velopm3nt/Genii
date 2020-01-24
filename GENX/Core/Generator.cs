@@ -32,11 +32,6 @@ namespace GENX.Core
 
         }
 
-        public void Run(ProjectFile file)
-        {
-            BuilderManager builder = new BuilderManager(file);
-
-        }
 
         #endregion
     }

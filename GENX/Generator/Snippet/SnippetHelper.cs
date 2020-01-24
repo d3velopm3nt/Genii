@@ -10,6 +10,7 @@ using System.IO;
 using GENX.Generator.Table.Column;
 using GENX.Generator.Table;
 using GENX.Generator.Project;
+using GENX.Core;
 
 namespace GENX.Generator.Snippet
 {
@@ -33,7 +34,7 @@ namespace GENX.Generator.Snippet
             snippet.BuildFileX(file);
 
             //Check the languag by file extension
-            snippet.ProgramingLanguage = LanguageHelper.GetProgrammingLangauage(file.FileExtension);
+            //snippet = (SnippetFile)LanguageHelper.GetFileFromExtention(file);
 
             //Check For GenTags in File Text
             snippet.GenTagList = TagHelper.GetTagsInText(file.FileText);
@@ -85,36 +86,37 @@ namespace GENX.Generator.Snippet
                 if (!CoreHelper.BasePropertyList().Any(x => x.Contains(column.ColumnName)))
                 {
                         newText += GetSnippetText(snippetText, propertyType)
-                            .Replace("[DataType]", column.DataType)
-                            .Replace("[Property]", column.ColumnName) + Environment.NewLine;
+                            .Replace(CoreConstants.DataType, column.DataType)
+                            .Replace(CoreConstants.Property, column.ColumnName)
+                            .Replace(CoreConstants.Entity,Table.TableName)+ Environment.NewLine;
                 }
             }
             return newText;
         }
 
-        public static string GetSnippetText(string text,string snippetName)
+        public static string GetSnippetText(string snippetText,string snippetName)
         {
             bool snippetStarted = false;
-            if (!text.Contains(snippetName))
-                return text;
+            if (!snippetText.Contains(snippetName))
+                return snippetText;
             else
             {
-                string[] lines = text.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                string[] lines = snippetText.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                 foreach (var line in lines)
                 {
                     if (line.Contains(SnippetContants.SnippetEnd))
-                        return text;
+                        return snippetText;
                     else if (snippetStarted)
-                        text += line;
+                        snippetText += line;
                     else if (line.Contains(snippetName + SnippetContants.SnippetStart))
                     {
-                        text = line.Replace(snippetName, "");
+                        snippetText = line.Replace(snippetName, "");
                         snippetStarted = true;
                     }
                     
                    
                 }
-                return text;
+                return snippetText;
             }
         }
 

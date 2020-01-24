@@ -1,5 +1,6 @@
 ﻿
 using DALX.Core;
+using GENX.Core;
 using GENX.Extensions;
 using GENX.Generator.Project;
 using GENX.Generator.Snippet;
@@ -56,35 +57,39 @@ namespace GENX.Generator.Builder
         {
             try
             {
-                try
-                {
-                    string path = "";
+                string path = "";
+                foreach (ExtensionFile extension in Extensions)
                     foreach (TableEntity table in projectFile.TableList)
                     {
-                        path = "";
-                        foreach(ExtensionFile extension in Extensions)
+                        path = extension.FilePath.Replace("[Entity]", table.TableName);
+                        string allText = FileHelper.ReadFile(path);
+                        bool update = false;
+                        foreach (ExtensionLine line in extension.Extensions)
                         {
-                            if(path == "")
-                            path = extension.FilePath.Replace("[Entity]", table.TableName);
-                            string allText = FileHelper.ReadFile(path);
-                            
-                            foreach(ExtensionLine line in extension.Extensions)
+                            string fullName = $"//[{line.Name}]";
+                            if (allText.Contains(fullName))
                             {
-                                if(allText.Contains($"[{line.Name}]"))
-                                    allText = SnippetHelper.GetSnippetText(allText)
+                                string snippetText = ProjectHelper.Snippets.Where(x => x.FileName == line.Snippet).FirstOrDefault().FileText;
+                                snippetText = SnippetHelper.GetSnippetText(snippetText, line.ID).Replace(CoreConstants.Entity, table.TableName);
+                               
+                                if (!allText.Contains(snippetText))
+                                {
+                                    snippetText += Environment.NewLine + fullName;
+                                    allText = allText.Replace(fullName, snippetText);
+                                    update = true;
+                                }
                             }
-                            
                         }
-                    }
-                }
-                catch (Exception ex)
-                {
+                        if (update)
+                            FileHelper.WriteToFile(path, allText);
 
-                    throw new Exception(ex.Message);
-                }
+                    }
+
             }
             catch (Exception ex)
             {
+
+                throw new Exception(ex.Message);
             }
         }
 

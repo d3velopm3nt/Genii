@@ -40,7 +40,8 @@ namespace DALX_UI.UserControls
             InitializeComponent();
             this.frmMain = frm;
             LoadManager();
-            builderManager = new BuilderManager(this.ProjectFile);
+         
+            builderManager = new BuilderManager(this.ProjectFile,this.Extensions);
             this.Dock = DockStyle.Fill;
         }
 
@@ -51,8 +52,8 @@ namespace DALX_UI.UserControls
         {          
             //Load ProjectFile from projectConfig.gex file
             LoadProjectConfig();
-           this.Extensions = ExtensionManager.LoadExtensions(ProjectFile.Path + @"\Extensions.genx");
-            builderManager = new BuilderManager(this.ProjectFile);
+           this.Extensions = ExtensionManager.LoadExtensions(ProjectFile.Path + @"Extensions.genx");
+            builderManager = new BuilderManager(this.ProjectFile,this.Extensions);
             //Load SQL Connection control
             if (this.SQLConnection == null)
                 this.SQLConnection = new ucSQLConnection(this.frmMain, this);
@@ -67,6 +68,7 @@ namespace DALX_UI.UserControls
                 panelDatabase.Controls.Add(SQLConnection);
             //Set the Labels on the header
             SetHeaderText();
+            this.LoadExtensionGrid();
         }
 
         private void LoadProjectConfig()
@@ -195,6 +197,15 @@ namespace DALX_UI.UserControls
             }
         }
 
+        private void LoadExtensionGrid()
+        {
+            dgvExtensions.Rows.Clear();
+            foreach(var extension in Extensions)
+            {
+                dgvExtensions.Rows.Add(extension.FilePath, extension.Extensions.Count.ToString());
+            }
+        }
+
         #endregion
 
         #region Form Methods
@@ -294,6 +305,8 @@ namespace DALX_UI.UserControls
         private void toolStripButton1_Click(object sender, EventArgs e)
         {           
             this.builderManager.GenerateTemplateTableFiles(this);
+
+            this.builderManager.RunExtensions();
         }
         #endregion
 

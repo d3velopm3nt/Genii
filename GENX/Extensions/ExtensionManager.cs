@@ -13,15 +13,26 @@ namespace GENX.Extensions
         public static List<ExtensionFile> LoadExtensions(string path)
         {
             List<ExtensionFile> extensions = new List<ExtensionFile>();
+            try
+            {
+
             string text = File.ReadAllText(path);
-            string[] exSnippets = ExtensionHelper.GetAllExtensionsFromFileText(text);
+            string[] exSnippets = ExtensionHelper.GetAllExtensionsFromFileText(text.Trim());
 
             foreach(var exText in exSnippets)
             {
                 ExtensionFile extension = new ExtensionFile();
-                extension.BuildExtensions(exText);                   
+                extension.BuildExtensions(exText);
+                    extensions.Add(extension);
+            }
+            }
+            catch (Exception ex)
+            {
+             
             }
             return extensions;
         }
+
+
     }
 }

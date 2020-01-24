@@ -10,7 +10,7 @@ namespace GENX.Extensions
     {
         public static string[] GetAllExtensionsFromFileText(string text)
         {
-            string[] extensions = text.Split(new[] { ExtensionConstants.ExtensionDelimiter }, StringSplitOptions.None);
+            string[] extensions = text.Split(new[] { ExtensionConstants.ExtensionDelimiter }, StringSplitOptions.RemoveEmptyEntries);
            
             return extensions;
         }

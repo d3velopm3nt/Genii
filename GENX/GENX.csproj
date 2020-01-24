@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\CoreConstants.cs" />
     <Compile Include="Core\Generator.cs" />
     <Compile Include="Core\Enums.cs" />
     <Compile Include="Core\FileX.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Extensions\ExtensionFile.cs" />
     <Compile Include="Extensions\ExtensionManager.cs" />
     <Compile Include="Files\CSharpFile.cs" />
+    <Compile Include="Files\ExistingFile.cs" />
     <Compile Include="Files\TypescriptFile.cs" />
     <Compile Include="Generator\Helpers\MappingHelper.cs" />
     <Compile Include="Generator\Snippet\SnippetContants.cs" />

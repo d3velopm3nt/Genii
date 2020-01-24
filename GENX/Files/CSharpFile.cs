@@ -9,6 +9,16 @@ namespace GENX.Files
 {
    public class CSharpFile :FileX
     {
+
+        public override string CommentLine
+        {
+            get
+            {
+                return "//";
+            }
+        }
+
+
         public override string GetDataType(string dbType)
         {
             string datatype = dbType;

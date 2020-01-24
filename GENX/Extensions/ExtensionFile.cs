@@ -16,7 +16,7 @@ namespace GENX.Extensions
 
         public ExtensionFile()
         {
-
+            this.Extensions = new List<ExtensionLine>();
         }
 
         public void BuildExtensions(string text)
@@ -33,12 +33,12 @@ namespace GENX.Extensions
                     {
                         Name = exArr[0],
                         Snippet = exArr[1],
-                        ID = exArr.Length > 1 ? exArr[2] : ""
+                        ID = exArr.Length > 2 ? exArr[2] : ""
                     };
                     this.Extensions.Add(ex);
                 }
                     else
-                    this.FilePath = line.Replace(ExtensionConstants.Path + "::", "").Trim();
+                    this.FilePath = line.Replace(ExtensionConstants.Path, "").Trim();
 
             }
         }

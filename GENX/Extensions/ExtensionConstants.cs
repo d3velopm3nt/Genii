@@ -8,7 +8,7 @@ namespace GENX.Extensions
 {
    public static class ExtensionConstants
     {
-        public static string Path = "##Path";
+        public static string Path = "##Path::";
         public static string ExtensionDelimiter = "##END";
     }
 }
