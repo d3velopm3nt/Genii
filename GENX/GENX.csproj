@@ -57,6 +57,7 @@
     <Compile Include="Files\CSharpFile.cs" />
     <Compile Include="Files\ExistingFile.cs" />
     <Compile Include="Files\TypescriptFile.cs" />
+    <Compile Include="Generator\GenerateHelper.cs" />
     <Compile Include="Generator\Helpers\MappingHelper.cs" />
     <Compile Include="Generator\Snippet\SnippetContants.cs" />
     <Compile Include="Interfaces\IXFile.cs" />

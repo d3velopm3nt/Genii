@@ -12,6 +12,7 @@ using GENX.Interfaces;
 using GENX.Generator.Snippet;
 using GENX.Generator.Helpers;
 using GENX.Files;
+using GENX.Core;
 
 namespace GENX.Generator.Builder
 {
@@ -27,7 +28,8 @@ namespace GENX.Generator.Builder
             file.Build(template);
             file.ProjectName = projectName;
             file.Load(template.FullPath);
-            file.FileText = ReplaceTagsTextInTemplate(file);
+            file.FileText = ReplaceStandardTextInTemplate(file);
+            file.FileText = file.FileText.ReplaceEntityTag(Table.TableName);
             file = SnippetHelper.CheckSnippetProperties(file, Table);
             file = MappingHelper.CheckMappingProperties(file, Table);
             return file;
@@ -41,11 +43,10 @@ namespace GENX.Generator.Builder
             return filename;
         }
 
-        private static string ReplaceTagsTextInTemplate(IXFile file)
-        {
+        private static string ReplaceStandardTextInTemplate(IXFile file)
+        {   
             StringBuilder sBuilder = new StringBuilder(file.FileText);
-            sBuilder.Replace("[Project]", file.ProjectName);
-            sBuilder.Replace("[Entity]", Table.TableName);
+            sBuilder.Replace("[Project]", file.ProjectName);            
             sBuilder.Replace("[DateGenerated]", DateTime.Now.ToString());
             sBuilder.Replace("[IEntity]", $"I{Table.TableName}");       
             return sBuilder.ToString();

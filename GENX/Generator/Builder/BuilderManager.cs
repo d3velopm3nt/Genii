@@ -18,13 +18,11 @@ namespace GENX.Generator.Builder
     public class BuilderManager
     {
         ProjectFile projectFile { get; set; }
-        List<ExtensionFile> Extensions { get; set; }
 
         public bool Pause { get; set; }
-        public BuilderManager(ProjectFile _projectfile, List<ExtensionFile> extensions)
+        public BuilderManager(ProjectFile _projectfile)
         {
             this.projectFile = _projectfile;
-            this.Extensions = extensions;
         }
 
         public void GenerateTemplateTableFiles(IGenXControl form)
@@ -53,45 +51,7 @@ namespace GENX.Generator.Builder
 
 
 
-        public void RunExtensions()
-        {
-            try
-            {
-                string path = "";
-                foreach (ExtensionFile extension in Extensions)
-                    foreach (TableEntity table in projectFile.TableList)
-                    {
-                        path = extension.FilePath.Replace("[Entity]", table.TableName);
-                        string allText = FileHelper.ReadFile(path);
-                        bool update = false;
-                        foreach (ExtensionLine line in extension.Extensions)
-                        {
-                            string fullName = $"//[{line.Name}]";
-                            if (allText.Contains(fullName))
-                            {
-                                string snippetText = ProjectHelper.Snippets.Where(x => x.FileName == line.Snippet).FirstOrDefault().FileText;
-                                snippetText = SnippetHelper.GetSnippetText(snippetText, line.ID).Replace(CoreConstants.Entity, table.TableName);
-                               
-                                if (!allText.Contains(snippetText))
-                                {
-                                    snippetText += Environment.NewLine + fullName;
-                                    allText = allText.Replace(fullName, snippetText);
-                                    update = true;
-                                }
-                            }
-                        }
-                        if (update)
-                            FileHelper.WriteToFile(path, allText);
-
-                    }
-
-            }
-            catch (Exception ex)
-            {
-
-                throw new Exception(ex.Message);
-            }
-        }
+       
 
         public void GenerateTableLinkedList()
         {

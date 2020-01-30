@@ -88,7 +88,13 @@ namespace GENX.Generator.Snippet
                         newText += GetSnippetText(snippetText, propertyType)
                             .Replace(CoreConstants.DataType, column.DataType)
                             .Replace(CoreConstants.Property, column.ColumnName)
-                            .Replace(CoreConstants.Entity,Table.TableName)+ Environment.NewLine;
+                            .ReplaceEntityTag(Table.TableName)+ Environment.NewLine;
+
+                    if (column.IsLinkedProperty)
+                    {
+                        //Generate Extension for linked property
+
+                    }
                 }
             }
             return newText;
