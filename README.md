@@ -62,7 +62,7 @@ public BaseEntity(DBHelper dbHelper){}
 public BaseEntity(object id, DBHelper dBHelper = null){} 
 
 Methods
-
+```
 public virtual bool Create();
 
 public virtual List<T> Read(int SelectTop = 0)
@@ -82,15 +82,15 @@ public bool Update(string column, string value)
  public bool Delete()
  
  public bool DeleteAll()
-  
+  ```
 HELPER METHODS
-
+``
 public int Count()
 
 public List<T> Distinct(string identifier)
   
 public bool Exist(string column, string value)
-
+``
 # SETUP
 
 Add the connection string in the app.config file of your Visual Studio C# application to use the DALX library to read and write from the database
