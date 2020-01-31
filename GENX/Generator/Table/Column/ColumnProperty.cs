@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace GENX.Generator.Table.Column
 {
-    public class ColumnPropety
+
+    public class ColumnProperty
     {
         #region Properties
         public string ColumnName { get; set; }
         public string dbType { get; set; }
         public bool IsLinkedProperty { get; set; }
+        public string LinkedTable { get; set; }
         private IXFile _file;
         public string DataType
         {
@@ -25,16 +27,17 @@ namespace GENX.Generator.Table.Column
         #endregion
 
         #region Constructors
-        public ColumnPropety()
+        public ColumnProperty()
         {
 
         }
-        public  ColumnPropety(string columnName,string dataType,string defaultValue,bool isLinked, IXFile file)
+        public  ColumnProperty(string columnName,string dataType,string defaultValue,bool isLinked,string linkedTable, IXFile file)
         {
             this.ColumnName = columnName;
             this.dbType = dataType;
             this.DefaultValue = defaultValue;
             this._file = file;
+            this.LinkedTable = linkedTable;
             this.IsLinkedProperty = isLinked;
             
         }

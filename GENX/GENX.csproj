@@ -60,6 +60,7 @@
     <Compile Include="Generator\GenerateHelper.cs" />
     <Compile Include="Generator\Helpers\MappingHelper.cs" />
     <Compile Include="Generator\Snippet\SnippetContants.cs" />
+    <Compile Include="Generator\Table\Column\LinkedProperty.cs" />
     <Compile Include="Interfaces\IXFile.cs" />
     <Compile Include="Core\XFileHelper.cs" />
     <Compile Include="Generator\Builder\BuilderHelper.cs" />
@@ -75,7 +76,7 @@
     <Compile Include="Generator\Snippet\SnippetFile.cs" />
     <Compile Include="Generator\Snippet\SnippetHelper.cs" />
     <Compile Include="Generator\Solution\SolutionHelper.cs" />
-    <Compile Include="Generator\Table\Column\ColumnPropety.cs" />
+    <Compile Include="Generator\Table\Column\ColumnProperty.cs" />
     <Compile Include="Generator\Table\TableEntity.cs" />
     <Compile Include="Generator\Table\TableHelper.cs" />
     <Compile Include="Generator\Tag\GenTag.cs" />

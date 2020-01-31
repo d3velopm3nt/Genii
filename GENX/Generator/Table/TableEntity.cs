@@ -1,4 +1,5 @@
-﻿using GENX.Generator.Table.Column;
+﻿using DALX.Core.Sql;
+using GENX.Generator.Table.Column;
 using GENX.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,14 +9,16 @@ using System.Threading.Tasks;
 
 namespace GENX.Generator.Table
 {
+   
+
    public class TableEntity
     {
         #region Properties
         public string TableName { get; set; }
-        public List<string> Relationships { get; set; }
+        public List<LinkedProperty> Relationships { get; set; }
         public IXFile File;
-        private List<ColumnPropety> columns;
-        public List<ColumnPropety> ColumnList
+        private List<ColumnProperty> columns;
+        public List<ColumnProperty> ColumnList
         {
             get
             {
@@ -35,8 +38,34 @@ namespace GENX.Generator.Table
         public TableEntity(string tableName)
         {
             this.TableName = tableName;
+
+            this.Relationships = GetTableRelationships();
  
         }
         #endregion
+            
+        private List<LinkedProperty> GetTableRelationships()
+        {
+            try
+            {
+                List<LinkedProperty> list = new List<LinkedProperty>();
+                var result = SqlHelper.SelectTableRelationships(this.TableName);
+                for (int i = 0; i < result.Count; i++)
+                {
+                    LinkedProperty property = new LinkedProperty();
+
+                    property.ColumnName = result[i].Row["FKColumn"].ToString();
+                    property.TableName = result[i].Row["ReferencedTable"].ToString();
+                    list.Add(property);
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

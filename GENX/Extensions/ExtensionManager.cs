@@ -15,6 +15,7 @@ namespace GENX.Extensions
    public class ExtensionManager
     {
         private ProjectFile _projectFile;
+        public List<ExtensionFile> Extensions { get; set; }
         public ExtensionManager(ProjectFile projectFile)
         {
             this._projectFile = projectFile;
@@ -42,13 +43,13 @@ namespace GENX.Extensions
             return extensions;
         }
 
-        public void RunExtensions(List<ExtensionFile> extensions, List<TableEntity> tables)
+        public void RunExtensions()
         {
             try
             {
                 string path = "";
-                foreach (ExtensionFile extension in extensions)
-                    foreach (TableEntity table in tables)
+                foreach (ExtensionFile extension in Extensions)
+                    foreach (TableEntity table in _projectFile.TableList)
                     {
                         path = extension.FilePath.Replace("[Entity]", table.TableName);
                         string allText = FileHelper.ReadFile(path);

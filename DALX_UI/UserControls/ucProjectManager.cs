@@ -44,7 +44,7 @@ namespace DALX_UI.UserControls
             LoadManager();
          
             builderManager = new BuilderManager(this.ProjectFile);
-            _extensionManager = new ExtensionManager(this.pro)
+            _extensionManager = new ExtensionManager(this.ProjectFile);
             this.Dock = DockStyle.Fill;
         }
 
@@ -57,6 +57,7 @@ namespace DALX_UI.UserControls
             LoadProjectConfig();
            this.Extensions = ExtensionManager.LoadExtensions(ProjectFile.Path + @"Extensions.genx");
             builderManager = new BuilderManager(this.ProjectFile);
+            _extensionManager.Extensions = this.Extensions;
             //Load SQL Connection control
             if (this.SQLConnection == null)
                 this.SQLConnection = new ucSQLConnection(this.frmMain, this);
@@ -309,7 +310,7 @@ namespace DALX_UI.UserControls
         {           
             this.builderManager.GenerateTemplateTableFiles(this);
 
-            this.builderManager.RunExtensions();
+            this._extensionManager.RunExtensions();
         }
         #endregion
 

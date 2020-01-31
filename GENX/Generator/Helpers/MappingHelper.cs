@@ -51,7 +51,7 @@ namespace GENX.Generator.Helpers
         {
             string newText = "";
             string snippetText = snippet.FileText;
-            foreach (ColumnPropety column in Table.ColumnList)
+            foreach (ColumnProperty column in Table.ColumnList)
             {
                 if (!CoreHelper.BasePropertyList().Any(x => x.Contains(column.ColumnName)))
                 {

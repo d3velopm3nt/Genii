@@ -80,7 +80,7 @@ namespace GENX.Generator.Snippet
         {
             string newText = "";
             string snippetText = snippet.FileText;
-            foreach (ColumnPropety column in Table.ColumnList)
+            foreach (ColumnProperty column in Table.ColumnList)
             {
                 string propertyType = column.IsLinkedProperty ? SnippetContants.LinkedProperty : SnippetContants.Property;
                 if (!CoreHelper.BasePropertyList().Any(x => x.Contains(column.ColumnName)))
