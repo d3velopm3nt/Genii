@@ -32,10 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DALC4NET, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\JayJay\source\repos\Innotrack Library\Innotrack.Data\bin\Debug\DALC4NET.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,6 +55,10 @@
     <ProjectReference Include="..\DALX\DALX.csproj">
       <Project>{7ca67d70-439b-4550-9b70-7778263dd2b5}</Project>
       <Name>DALX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GENX\GENX.csproj">
+      <Project>{AA816441-BF01-4721-A26A-ABA56045E4E8}</Project>
+      <Name>GENX</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -20,14 +20,14 @@ namespace GENX.Generator.Builder
     {
 
         static TableEntity Table { get; set; }
-        public static IXFile BuildEntityTemplateFile(IXFile template, TableEntity table, string projectName)
+        public static IXFile BuildEntityTemplateFile(IXFile file, TableEntity table, string projectName)
         {
             Table = table;
-            IXFile file = new TemplateFile();
+            //IXFile file = new TemplateFile();
 
-            file.Build(template);
+            //file.Build(template);
             file.ProjectName = projectName;
-            file.Load(template.FullPath);
+            file.Load(file.FullPath);
             file.FileText = ReplaceStandardTextInTemplate(file);
             file.FileText = file.FileText.ReplaceEntityTag(Table.TableName);
             file = SnippetHelper.CheckSnippetProperties(file, Table);

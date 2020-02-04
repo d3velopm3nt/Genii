@@ -17,12 +17,12 @@ namespace GENX.Generator.Builder
 {
     public class BuilderManager
     {
-        ProjectFile projectFile { get; set; }
-
+       public static ProjectFile projectFile { get; set; }
+       
         public bool Pause { get; set; }
         public BuilderManager(ProjectFile _projectfile)
         {
-            this.projectFile = _projectfile;
+            projectFile = _projectfile;
         }
 
         public void GenerateTemplateTableFiles(IGenXControl form)
@@ -36,7 +36,8 @@ namespace GENX.Generator.Builder
                     {
                         //Change path to entity name folder if [Entity] exists in path
                         template.TargetPath.Replace("[Entity]", table.TableName);
-                        BuilderHelper.BuildEntityTemplateFile(template, table, projectFile.ProjectName).Generate(template.TargetPath + @"\" + table.TableName + BuilderHelper.CheckFilePostFix(template.FileName));
+                        template.FileName = table.TableName + template.FileName;
+                        BuilderHelper.BuildEntityTemplateFile(template, table, projectFile.ProjectName).Generate($"{template.TargetPath} \\ {template.FileName}");
 
                         form.GetUpdatedMessageStatus(template.FileName, table.TableName, "File generated successfully");
 
@@ -48,16 +49,5 @@ namespace GENX.Generator.Builder
                 throw new Exception(ex.Message);
             }
         }
-
-
-
-       
-
-        public void GenerateTableLinkedList()
-        {
-
-        }
-
-
     }
 }

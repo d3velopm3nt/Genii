@@ -1,4 +1,5 @@
 ﻿using GENX.Generator;
+using GENX.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,17 @@ namespace GENX.Files
 {
    public class CSharpFile :FileX
     {
+        #region Contructors
+        public CSharpFile()
+        {
+                
+        }
 
+        public CSharpFile(IXFile file): base(file)
+        {
+
+        }
+        #endregion
         public override string CommentLine
         {
             get

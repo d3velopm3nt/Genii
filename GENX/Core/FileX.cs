@@ -15,7 +15,7 @@ namespace GENX.Generator
         public string SolutionName { get; set; }
         public string ProjectName { get; set; }
         public string FullPath { get; set; }
-        public string FileName { get; set; } = "";
+        public virtual string FileName { get; set; } = "";
 
         public virtual string CommentLine { get;  }
 
@@ -86,9 +86,9 @@ namespace GENX.Generator
             return this; 
         }
 
-        public IXFile Load(string path)
+        public void Load(string path)
         {
-            return this;
+            this.FileText = FileHelper.ReadFile(path);
         }
 
         public virtual string GetDataType(string dbType)

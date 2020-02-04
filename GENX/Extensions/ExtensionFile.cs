@@ -29,11 +29,19 @@ namespace GENX.Extensions
                 if (!line.Contains(ExtensionConstants.Path))
                 {
                     string[] exArr = line.Split("::".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                    string name = "";
+                    bool islink = false;
+                    if (exArr[0].Contains("L:"))
+                        islink = true;
+                    
+                        name = exArr[0].Replace("L:", "");
+                    
                     ExtensionLine ex = new ExtensionLine()
                     {
-                        Name = exArr[0],
+                        Name = name,
                         Snippet = exArr[1],
-                        ID = exArr.Length > 2 ? exArr[2] : ""
+                        ID = exArr.Length > 2 ? exArr[2] : "",
+                        IsLink = islink
                     };
                     this.Extensions.Add(ex);
                 }

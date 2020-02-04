@@ -14,7 +14,7 @@ namespace GENX.Generator.Template
     {
         #region    Properties
         public List<SnippetFile> SnippetList { get; set; }
-        public string TargetPath { get; set; } = "";
+        //public string TargetPath { get; set; } = "";
         #endregion
 
         public TemplateFile(IXFile file) :base(file)

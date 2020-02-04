@@ -1,11 +1,12 @@
 ﻿using DALX.Core;
-
+using GENX.Files;
 using GENX.Generator.Connection;
 using GENX.Generator.Library;
 using GENX.Generator.Snippet;
 using GENX.Generator.Solution;
 using GENX.Generator.Table;
 using GENX.Generator.Template;
+using GENX.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -110,7 +111,7 @@ namespace GENX.Generator.Project
                 if (File.Exists(fullpath))
                 {
                     var lines = File.ReadAllLines(fullpath);
-                    var template = new TemplateFile();
+                    IXFile template = new TemplateFile();
 
                     foreach (string line in lines)
                     {
@@ -133,7 +134,7 @@ namespace GENX.Generator.Project
                             ///Add Template to ProjectFile
                             else if (line.Contains("#Template::"))
                             {
-                                template = new TemplateFile(projectFile);
+                                template = Language.LanguageHelper.GetFileFromExtention(lineText.GetFileExtention(),projectFile);
                                 template.FileName = lineText;
                                 template.FullPath = path + @"\Templates\" + lineText;
 

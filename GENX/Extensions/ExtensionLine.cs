@@ -11,5 +11,6 @@ namespace GENX.Extensions
         public string Name { get; set; }
         public string Snippet { get; set; }
         public string ID { get; set; }
+        public bool IsLink { get; set; }
     }
 }

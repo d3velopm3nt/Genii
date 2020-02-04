@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GENX.Generator.Template;
 using GENX.Generator.Table;
+using GENX.Interfaces;
 
 namespace GENX.Generator.Project
 {
@@ -15,9 +16,8 @@ namespace GENX.Generator.Project
         public string Solution { get; set; }
         public string Name { get; set; }
         public string Path { get; set; }
-        public string TargetPath { get; set; }
         public ConnectionFile DefaultConnection { get; set; }
-        public List<TemplateFile> TemplateList { get; set; }
+        public List<IXFile> TemplateList { get; set; }
         public List<TableEntity> TableList { get; set; }
 
         #endregion
@@ -26,7 +26,7 @@ namespace GENX.Generator.Project
         public ProjectFile()
         {
             DefaultConnection = new ConnectionFile();
-            TemplateList = new List<TemplateFile>();
+            TemplateList = new List<IXFile>();
             TableList = new List<TableEntity>();
         }
         #endregion

@@ -1,4 +1,5 @@
 ﻿using GENX.Files;
+using GENX.Generator.Template;
 using GENX.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -34,20 +35,18 @@ namespace GENX.Generator.Language
             return language;
         }
 
-        public static IXFile GetFileFromExtention(IXFile file)
+        public static IXFile GetFileFromExtention(string ext,IXFile projectFile = null)
         {
-            switch(GetProgrammingLangauage(file.FileExtension))
+            
+            switch(GetProgrammingLangauage(ext))
             {
                 case LanguageList.CSHARP:
-                    file = (CSharpFile)file;
-                    break;
-                    
+                  return  new CSharpFile(projectFile);
                 case LanguageList.TYPESCRIPT:
-                    file = (TypescriptFile)file;
-                    break;
+                   return  new TypescriptFile(projectFile);
+                default:
+                    return new TemplateFile(projectFile);
             }
-
-            return file;
         }
     }
 }

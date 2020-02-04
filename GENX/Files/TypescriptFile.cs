@@ -1,4 +1,5 @@
 ﻿using GENX.Generator;
+using GENX.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,29 @@ using System.Threading.Tasks;
 
 namespace GENX.Files
 {
-   public class TypescriptFile :FileX
+    public class TypescriptFile : FileX
     {
         public TypescriptFile()
         {
 
+        }
+
+        public TypescriptFile(IXFile file) : base(file)
+        {
+
+        }
+
+        private string fileName;
+        public override string FileName
+        {
+            get
+            {
+                return fileName.ReplaceWithDash().ToLower();
+            }
+            set
+            {
+                fileName = value;
+            }
         }
 
         public override string GetDataType(string dbType)
@@ -34,7 +53,7 @@ namespace GENX.Files
                 case "datetime2":
                     datatype = "Date";
                     break;
-                case "real":                 
+                case "real":
                 case "decimal":
                 case "smallint":
                 case "bigint":

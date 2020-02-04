@@ -90,11 +90,12 @@ namespace GENX.Generator.Snippet
                             .Replace(CoreConstants.Property, column.ColumnName)
                             .ReplaceEntityTag(Table.TableName)+ Environment.NewLine;
 
-                    if (column.IsLinkedProperty)
-                    {
+                    if (column.IsLinkedProperty)                  
                         //Generate Extension for linked property
-
-                    }
+                        //Loop through table relationship tables.
+                        //Check if there is any extention that used for linked properties.
+                        Extensions.ExtensionManager.RunLinkedExtensions(column.LinkedTable);
+                    
                 }
             }
             return newText;

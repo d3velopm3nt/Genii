@@ -10,6 +10,7 @@ using GENX.Generator.Table;
 using GENX.Generator.Builder;
 using GENX.Interfaces;
 using GENX.Extensions;
+using GENX.Generator.Language;
 
 namespace DALX_UI.UserControls
 {
@@ -57,7 +58,7 @@ namespace DALX_UI.UserControls
             LoadProjectConfig();
            this.Extensions = ExtensionManager.LoadExtensions(ProjectFile.Path + @"Extensions.genx");
             builderManager = new BuilderManager(this.ProjectFile);
-            _extensionManager.Extensions = this.Extensions;
+            ExtensionManager.Extensions = this.Extensions;
             //Load SQL Connection control
             if (this.SQLConnection == null)
                 this.SQLConnection = new ucSQLConnection(this.frmMain, this);
@@ -114,17 +115,18 @@ namespace DALX_UI.UserControls
             }
         }
 
-        private List<TemplateFile> GetTemplateList()
+        private List<IXFile> GetTemplateList()
         {
-            var list = new List<TemplateFile>();
+            var list = new List<IXFile>();
             for (int i = 0; i < dgvTemplates.RowCount; i++)
             {
                 if (dgvTemplates.Rows[i].Cells[1].Value != null && dgvTemplates.Rows[i].Cells[1].Value.ToString() != "")
                 {
-                    TemplateFile template = new TemplateFile();
-                    template.FileName = dgvTemplates.Rows[i].Cells[0].Value.ToString();
-                    template.TargetPath = dgvTemplates.Rows[i].Cells[1].Value.ToString();
-                    list.Add(template);
+                   string fileExt = dgvTemplates.Rows[i].Cells[0].Value.ToString();
+                    IXFile file = LanguageHelper.GetFileFromExtention(fileExt,ProjectFile);
+                    file.FileName = fileExt;
+                    file.TargetPath = dgvTemplates.Rows[i].Cells[1].Value.ToString();
+                    list.Add(file);
                 }
             }
             return list;
@@ -171,7 +173,7 @@ namespace DALX_UI.UserControls
             dgvTemplates.Rows.Clear();
             foreach (string temp in templates)
             {
-                TemplateFile template = ProjectFile.TemplateList.Where(x => x.FileName == temp).FirstOrDefault();
+                IXFile template = ProjectFile.TemplateList.Where(x => x.FileName == temp).FirstOrDefault();
                 if (template == null)
                     template = new TemplateFile();
                 dgvTemplates.Rows.Add(temp, template.TargetPath);
@@ -192,7 +194,7 @@ namespace DALX_UI.UserControls
         private void LoadGenerateGridList()
         {
             dgvGenerateFiles.Rows.Clear();
-            foreach (TemplateFile template in ProjectFile.TemplateList)
+            foreach (IXFile template in ProjectFile.TemplateList)
             {
                 foreach (TableEntity table in ProjectFile.TableList)
                 {

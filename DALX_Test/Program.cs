@@ -1,6 +1,7 @@
 ﻿using DALX.Core;
 using DALX.Core.Sql.Sorters;
 using DALX_Test.Models;
+using GENX.Files;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,21 @@ namespace DALX_Test
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Enter work in camelcase");
+            var result = Console.ReadLine();
+            result = result.ReplaceWithDash();
+            Console.WriteLine(result.ToLower());
+            Console.ReadLine();
+            
+        }
+
+
+
+        private static void Simulate()
+        {
             Console.WriteLine("Press Enter 1 to create a new user and 2 to view users");
             var result = Console.ReadLine();
-                CoreUser user = new CoreUser();
+            CoreUser user = new CoreUser();
             if (result == "1")
             {
                 for (int i = 0; i < 1000; i++)
@@ -26,11 +39,11 @@ namespace DALX_Test
                     user.Email = "xxx@xxx.com";
                     user.Password = "xxx";
                     user.Create();
-                    Console.WriteLine(user.FirstName + " " + user.LastName + " Created"); 
+                    Console.WriteLine(user.FirstName + " " + user.LastName + " Created");
                 }
                 Console.ReadLine();
-                }
-            else if(result =="2")
+            }
+            else if (result == "2")
             {
                 //SorterCollection sorters = new SorterCollection();
                 //sorters.Add(new QuerySorter("FirstName", QuerySortType.ASC));
@@ -47,13 +60,12 @@ namespace DALX_Test
             {
                 Guid guid = new Guid("8E3F814F-7CAD-4C5A-915F-0001024D8377");
 
-                
-                 user = new CoreUser(guid);
+
+                user = new CoreUser(guid);
 
                 //Console.WriteLine(user.FirstName + " " + user.LastName + " Date: " + user.CreatedDateTime + " Found");
                 Console.ReadLine();
             }
-
         }
     }
 }

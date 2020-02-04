@@ -98,6 +98,11 @@ namespace DALX_UI
         {
             System.Diagnostics.Process.Start("explorer.exe", BuildCurrentPath());
         }
+
+        private void OpenTargetProjectFodlerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe",ProjectManager.ProjectFile.TargetPath);
+        }
         #endregion
 
         #region Nav Menu
@@ -297,8 +302,9 @@ namespace DALX_UI
         {
             StatuslblMain.Text = status;
         }
+
         #endregion
 
-       
+
     }
 }
