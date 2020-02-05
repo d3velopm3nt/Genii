@@ -76,7 +76,7 @@ namespace GENX.Generator.Project
             projectFile += "##Templates" + Environment.NewLine;
 
             if (file.TemplateList != null)
-                foreach (TemplateFile temp in file.TemplateList)
+                foreach (IXFile temp in file.TemplateList)
                 {
                     projectFile += "#Template::" + temp.FileName + Environment.NewLine +
                         "#Path::" + temp.TargetPath + Environment.NewLine;

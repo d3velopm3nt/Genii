@@ -11,9 +11,30 @@ namespace GENX.Files
     {
         public static string ReplaceWithDash(this string input)
         {
-            string output = Regex.Replace(input, "([a-z])_?([A-Z])", "$1 $2");
+            string output = ReplaceWithCamelCase(input);
             output = output.Replace(" ", "-");
             return output;
+        }
+
+        public static string ReplaceWithDash(this StringBuilder input)
+        {
+            string output = ReplaceWithCamelCase(input.ToString());
+            output = output.Replace(" ", "-");
+            return output;
+        }
+
+        public static string ReplaceWithCamelCase(this string input)
+        {
+            string output = Regex.Replace(input, "([a-z])_?([A-Z])", "$1 $2");
+            string camelCase = output.Substring(0, 1).ToLower() + output.Substring(1);
+            return camelCase;
+        }
+
+        public static string ReplaceWithCamelCase(this StringBuilder input)
+        {
+            string output = Regex.Replace(input.ToString(), "([a-z])_?([A-Z])", "$1 $2");
+            string camelCase = output.Substring(0, 1).ToLower() + output.Substring(1);
+            return camelCase;
         }
 
         public static string GetFileExtention(this string fileName)

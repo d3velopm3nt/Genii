@@ -31,6 +31,9 @@ namespace GENX.Generator.Language
                 case "ts":
                     language = LanguageList.TYPESCRIPT;
                     break;
+                case "html":
+                language = LanguageList.HTML;
+                break;
             }
             return language;
         }
@@ -44,6 +47,8 @@ namespace GENX.Generator.Language
                   return  new CSharpFile(projectFile);
                 case LanguageList.TYPESCRIPT:
                    return  new TypescriptFile(projectFile);
+                case LanguageList.HTML:
+                return new HtmlFile(projectFile);
                 default:
                     return new TemplateFile(projectFile);
             }

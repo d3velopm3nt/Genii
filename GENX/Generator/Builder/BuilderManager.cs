@@ -8,10 +8,7 @@ using GENX.Generator.Table;
 using GENX.Generator.Template;
 using GENX.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GENX.Generator.Helpers;
 
 namespace GENX.Generator.Builder
 {
@@ -35,8 +32,9 @@ namespace GENX.Generator.Builder
                     foreach (TableEntity table in projectFile.TableList)
                     {
                         //Change path to entity name folder if [Entity] exists in path
-                        template.TargetPath.Replace("[Entity]", table.TableName);
-                        template.FileName = table.TableName + template.FileName;
+                        template.TargetPath =  template.TargetPath.ReplaceEntityTag( table.TableName);
+
+                        template.FileName = template.FileName.ReplaceEntityTag(table.TableName);
                         BuilderHelper.BuildEntityTemplateFile(template, table, projectFile.ProjectName).Generate($"{template.TargetPath} \\ {template.FileName}");
 
                         form.GetUpdatedMessageStatus(template.FileName, table.TableName, "File generated successfully");

@@ -12,7 +12,8 @@ namespace GENX.Generator.Language
         JAVASCRIPT,
         CSHTML,
         CSS,
-        TYPESCRIPT
+        TYPESCRIPT,
+        HTML,
 
     }
 }

@@ -12,6 +12,10 @@ namespace GENX.Core
         /// This is update case table name
         /// </summary>
         public static string Entity = "[Entity]";
+        public static string EntityUpper = "[ENTITY]";
+        public static string EntityLower = "[entity]";
+        public static string EntityCC = "[Entity:cc]";
+        public static string EntityDash = "[Entity:d]";
 
         public static string Property = "[Property]";
         public static string LinkedProperty = "[LinkedProperty]";
