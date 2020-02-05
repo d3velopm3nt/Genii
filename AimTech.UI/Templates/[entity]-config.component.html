@@ -1,0 +1,90 @@
+<div id="[entity:d]" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="AppRoutes.[Entity:cc]List">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div class="[entity:d]-image mr-8 mr-sm-16">
+
+                    <img *ngIf="imagePath" [src]="imagePath">
+                </div>
+
+                <div fxLayout="column" fxLayoutAlign="start start">
+                    <div class="h2" *ngIf="configType ==='Edit'">
+                        {{[entity:d].name}}
+                    </div>
+                    <div class="h2">
+                        {{configType}} [Entity]
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span>[Entity] Detail</span>
+                    </div>
+                </div>
+            </div>
+            <!-- / APP TITLE -->
+           
+            <button form="form" mat-raised-button class="save-product-button" [disabled]="myForm.invalid || myForm.pristine"
+                type="submit">
+                <span>SAVE</span>
+            </button>
+            
+        </div>
+        <!-- / HEADER -->
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+                <div class="mb-24" fxLayout="column" fxLayoutAlign="start" fxLayout.gt-md="row">
+                    <form class="mat-card mat-elevation-z4 p-24 mr-24" fxLayout="column" fxLayoutAlign="start"
+                        fxFlex="1 0 auto" name="form" id="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+                        <div class="h2 mb-24">{{configType}} [Entity]</div>
+
+                        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Name</mat-label>
+                                <input matInput formControlName="name">
+                                
+                            </mat-form-field>
+
+                        </div>
+                        <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Description</mat-label>
+                                <textarea matInput formControlName="description">
+
+                        </textarea>
+                            </mat-form-field>
+                        </div>
+                        <div *ngIf="configType === 'Update'" fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                            <upload-file [imgPath]="imagePath" [type]="'1'" [id]="[Entity:d].id"
+                                (onUploadFinished)="uploadFinished($event)"></upload-file>
+                        </div>
+                        <div *ngIf="configType === 'Update'" fxFlex="500">
+                            <!-- <button class="config-button" mat-raised-button color="primary" type="submit">Save</button> -->
+                            <button class="config-button" mat-raised-button color="warn" type="button"
+                                (click)="onDelete()">Delete</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
