@@ -31,7 +31,7 @@ namespace GENX.Interfaces
 
         #region Methods
         IXFile Build(IXFile xFile);
-        bool Generate(string path);
+        bool Generate(string path,string fileName);
         void Load(string path);
         
         #endregion

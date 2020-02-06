@@ -14,9 +14,10 @@ namespace GENX.Core
         public static string Entity = "[Entity]";
         public static string EntityUpper = "[ENTITY]";
         public static string EntityLower = "[entity]";
-        public static string EntityCC = "[Entity:cc]";
-        public static string EntityDash = "[Entity:d]";
-
+        public static string EntityCamelCase = "[Entity-cc]";
+        public static string EntityCamelCaseSpace = "[Entity-cc ]";
+        public static string EntityDash = "[Entity-d]";
+        public static string EntitySpace = "[Entity ]";
         public static string Property = "[Property]";
         public static string LinkedProperty = "[LinkedProperty]";
         public static string DataType = "[DataType]";

@@ -78,10 +78,8 @@ namespace GENX.Generator
         public IXFile BuildFileX(IXFile file)
         {
             this.FileName = file.FileName;
-            this.FileText = FileText;
-            this.FileExtension = FileExtension;
-            this.SolutionName = file.SolutionName;
-            this.ProjectName = file.ProjectName;
+            //this.SolutionName = file.SolutionName;
+            //this.ProjectName = file.ProjectName;
             this.FullPath = file.FullPath;
             return this; 
         }

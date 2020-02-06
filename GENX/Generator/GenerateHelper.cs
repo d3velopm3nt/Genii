@@ -25,10 +25,21 @@ namespace GENX.Generator
             sBuilder.Replace(CoreConstants.EntityUpper, table);
             //Lower Case
             sBuilder.Replace(CoreConstants.EntityLower, table.ToLower());
+
+            //Add Spaces with between entity words
+            sBuilder.AddSpaceInEntity(table);
             // Camel Case
             sBuilder.ReplaceEntityCC(table);
             //Dash and lower case
             sBuilder.ReplaceEntityDash(table);
+            return sBuilder.ToString();
+        }
+
+        public static string AddSpaceInEntity(this StringBuilder sBuilder,string table)
+        {
+            sBuilder.Replace(CoreConstants.EntitySpace, table.AddSpacesBetweenWords());
+            sBuilder.Replace(CoreConstants.EntityUpper, table.ToUpper().AddSpacesBetweenWords());
+            sBuilder.Replace(CoreConstants.EntityLower, table.ToLower().AddSpacesBetweenWords());
             return sBuilder.ToString();
         }
 
@@ -42,8 +53,10 @@ namespace GENX.Generator
 
         public static string ReplaceEntityCC(this StringBuilder sBuilder,string table)
         {
-            sBuilder.Replace(CoreConstants.EntityCC.ToLower(), table.ReplaceWithCamelCase().ToLower());
-            sBuilder.Replace(CoreConstants.EntityCC, table.ReplaceWithCamelCase().ToLower());
+            sBuilder.Replace(CoreConstants.EntityCamelCase.ToLower(), table.ReplaceWithCamelCase().ToLower());
+            sBuilder.Replace(CoreConstants.EntityCamelCase, table.ReplaceWithCamelCase().ToLower());
+            sBuilder.Replace(CoreConstants.EntityCamelCaseSpace, table.ReplaceWithCamelCase().AddSpacesBetweenWords());
+
 
             return sBuilder.ToString();
         }

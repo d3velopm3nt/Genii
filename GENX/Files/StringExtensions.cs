@@ -11,7 +11,7 @@ namespace GENX.Files
     {
         public static string ReplaceWithDash(this string input)
         {
-            string output = ReplaceWithCamelCase(input);
+            string output = AddSpacesBetweenWords(input);
             output = output.Replace(" ", "-");
             return output;
         }
@@ -23,10 +23,16 @@ namespace GENX.Files
             return output;
         }
 
-        public static string ReplaceWithCamelCase(this string input)
+        public static string AddSpacesBetweenWords(this string input)
         {
             string output = Regex.Replace(input, "([a-z])_?([A-Z])", "$1 $2");
-            string camelCase = output.Substring(0, 1).ToLower() + output.Substring(1);
+            return output;
+        }
+
+        public static string ReplaceWithCamelCase(this string input)
+        {
+            
+            string camelCase = input.Substring(0, 1).ToLower() + input.Substring(1);
             return camelCase;
         }
 

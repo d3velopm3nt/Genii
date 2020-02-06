@@ -223,8 +223,8 @@ namespace DALX_UI.UserControls
 
                 if (txtpath.Text == "")
                     throw new Exception("No path was entered to configure");
-
-                ProjectHelper.CreateFile(PopulateProjectFile(txtpath.Text));
+                this.ProjectFile.TargetPath = txtpath.Text;
+                ProjectHelper.CreateFile(this.ProjectFile);
 
                 btnSavePath.Visible = false;
                 txtpath.Enabled = false;

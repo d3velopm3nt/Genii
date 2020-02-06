@@ -1,4 +1,4 @@
-<div id="categories" class="page-layout carded fullwidth inner-scroll">
+<div id="[entity]" class="page-layout carded fullwidth inner-scroll">
 
     <!-- TOP BACKGROUND -->
     <div class="top-bg accent"></div>
@@ -16,23 +16,24 @@
             developer_board
           </mat-icon>
           <span class="logo-text h1">
-            Categories
+            [Entity] List
           </span>
         </div>
         <!-- / APP TITLE -->
   
         <!-- SEARCH -->
+        <!-- SEARCH -->
         <div class="search-wrapper mx-32 mx-md-0">
           <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
             <mat-icon>search</mat-icon>
-            <input (keyup)="doFilter($event.target.value)" placeholder="Search for a [Entity]">
+            <input (keyup)="doFilter($event.target.value)" placeholder="Search for a [Entity ]">
           </div>
         </div>
         <!-- / SEARCH -->
   
         <!-- ADD BUTTON -->
         <button mat-raised-button (click)="new[Entity]()" class="add-product-button fuse-white mt-24 mt-md-0">
-          <span>ADD NEW CATEGORY</span>
+          <span>ADD NEW [ENTITY ]</span>
         </button>
         <!-- / ADD BUTTON -->
   
@@ -42,12 +43,12 @@
       <!-- CONTENT -->
       <div class="content-card">
   
-        <mat-table class="categories-table" [dataSource]='dataSource' matSort fusePerfectScrollbar>
+        <mat-table class="[entity]-table" [dataSource]='dataSource' matSort fusePerfectScrollbar>
             <!-- Image Column -->
             <ng-container matColumnDef="image">
               <mat-header-cell *matHeaderCellDef>Image</mat-header-cell>
               <mat-cell *matCellDef="let [Entity]">
-                <img class="[entity:d]-image" *ngIf="[Entity].imagePath" [src]="getImagePath([Entity].imagePath)">
+                <img class="[entity-d]-image" *ngIf="[Entity].imagePath" [src]="getImagePath([Entity].imagePath)">
               </mat-cell>
             </ng-container>
             <!--Name Column-->

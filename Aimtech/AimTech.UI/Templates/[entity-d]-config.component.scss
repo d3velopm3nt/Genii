@@ -2,11 +2,11 @@
     width: 100px;
     margin-right: 10px;
 }
-#[entity:d] {
+#[entity-d] {
 
     .header {
 
-        .[entity:d]-image {
+        .[entity-d]-image {
             overflow: hidden;
             width: 56px;
             min-width: 56px;
@@ -40,7 +40,7 @@
         height: 64px;
     }
 
-    .[entity:d]-image {
+    .[entity-d]-image {
         //overflow: hidden;
         width: 128px;
         height: 128px;

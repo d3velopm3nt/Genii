@@ -16,15 +16,15 @@ export class [Entity]DataService extends DefaultDataService<[Entity]>{
     }
 
     getWithQuery(params):Observable<[Entity][]>{
-        var url = `${environment.[Entity]}`;
+        var url = `${environment.[entity]}`;
         
-         return this.http.get<[Entity][]>(`${url}/${params.farmId}`).pipe(      
+         return this.http.get<[Entity][]>(`${url}/${params.Id}`).pipe(      
         map(res=> res['responseData']));
     }
 
 
     getAll():Observable<[Entity][]>{
-        var url = `${environment.[Entity]}`;
+        var url = `${environment.[entity]}`;
     
         return this.http.get<[Entity][]>(`${url}`).pipe(
             map(res=>  res['responseData'] )
@@ -34,20 +34,20 @@ export class [Entity]DataService extends DefaultDataService<[Entity]>{
 
     add([Entity]:any):Observable<[Entity]>{
       
-     return this.http.post(environment.[Entity],[Entity]).pipe(
+     return this.http.post(environment.[entity],[Entity]).pipe(
          map(res => res['responseData']
          )
      );   
     }
 
     update([Entity]:any):Observable<[Entity]>{
-        return this.http.put(environment.[Entity],[Entity].changes).pipe(
+        return this.http.put(environment.[entity],[Entity].changes).pipe(
             map(res => res['responseData'])
         );
     }
 
     delete(id:any){
-        return this.http.delete(environment.[Entity] + "/" + id).pipe(
+        return this.http.delete(environment.[entity] + "/" + id).pipe(
             map(res => res['responseData'])
         );
     }

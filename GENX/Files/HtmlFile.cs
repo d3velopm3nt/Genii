@@ -29,6 +29,7 @@ namespace GENX.Files
             }
             set
             {
+                if(!String.IsNullOrEmpty(value))
                 fileName = value.ReplaceWithDash().ToLower();
             }
         }

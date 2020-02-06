@@ -35,7 +35,7 @@ namespace GENX.Generator.Builder
                         template.TargetPath =  template.TargetPath.ReplaceEntityTag( table.TableName);
 
                         template.FileName = template.FileName.ReplaceEntityTag(table.TableName);
-                        BuilderHelper.BuildEntityTemplateFile(template, table, projectFile.ProjectName).Generate($"{template.TargetPath} \\ {template.FileName}");
+                        BuilderHelper.BuildEntityTemplateFile(template, table, projectFile.ProjectName).Generate(template.TargetPath, template.FileName);
 
                         form.GetUpdatedMessageStatus(template.FileName, table.TableName, "File generated successfully");
 

@@ -1,4 +1,4 @@
-<div id="[entity:d]" class="page-layout carded fullwidth inner-scroll">
+<div id="[entity-d]" class="page-layout carded fullwidth inner-scroll">
 
     <!-- TOP BACKGROUND -->
     <div class="top-bg accent"></div>
@@ -17,14 +17,14 @@
                     <mat-icon>arrow_back</mat-icon>
                 </button>
 
-                <div class="[entity:d]-image mr-8 mr-sm-16">
+                <div class="[entity-d]-image mr-8 mr-sm-16">
 
                     <img *ngIf="imagePath" [src]="imagePath">
                 </div>
 
                 <div fxLayout="column" fxLayoutAlign="start start">
                     <div class="h2" *ngIf="configType ==='Edit'">
-                        {{[entity:d].name}}
+                        {{[entity-d].name}}
                     </div>
                     <div class="h2">
                         {{configType}} [Entity]
@@ -73,7 +73,7 @@
                             </mat-form-field>
                         </div>
                         <div *ngIf="configType === 'Update'" fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
-                            <upload-file [imgPath]="imagePath" [type]="'1'" [id]="[Entity:d].id"
+                            <upload-file [imgPath]="imagePath" [type]="'1'" [id]="[entity-d].id"
                                 (onUploadFinished)="uploadFinished($event)"></upload-file>
                         </div>
                         <div *ngIf="configType === 'Update'" fxFlex="500">
