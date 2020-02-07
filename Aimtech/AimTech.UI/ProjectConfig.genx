@@ -2,26 +2,32 @@
 
 #Solution::Aimtech
 #Project::AimTech.UI
-#Project Path::C:\Users\JayJay Barnard\Documents\GenX Source\Solutions\\Aimtech\AimTech.UI\
-#Target Path::D:\Personal\Development\Test AimTech
+#Project Path::C:\Users\JayJay\Documents\GenX Source\Solutions\\Aimtech\AimTech.UI\
+#Target Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app
 
 #Conn::Data Source=197.242.148.195; Database=Aimdbdev;User ID=admin;Password=admin;
 
 ##Templates
 #Template::[entity-d]-config.component.html
-#Path::D:\Personal\Development\Test AimTech\[entity-d]\[entity-d]-config\
+#Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\[entity-d]\[entity-d]-config\
 #Template::[entity-d]-config.component.scss
-#Path::D:\Personal\Development\Test AimTech\[entity-d]\[entity-d]-config\
+#Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\[entity-d]\[entity-d]-config\
 #Template::[entity-d]-config.component.ts
-#Path::D:\Personal\Development\Test AimTech\[entity-d]\[entity-d]-config\
+#Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\[entity-d]\[entity-d]-config\
+#Template::[entity-d]-list.component.html
+#Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\[entity-d]\[entity-d]-list\
+#Template::[entity-d]-list.component.scss
+#Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\[entity-d]\[entity-d]-list\
+#Template::[entity-d]-list.component.ts
+#Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\[entity-d]\[entity-d]-list\
 #Template::[entity-d].data.service.ts
-#Path::D:\Personal\Development\Test AimTech\[entity-d]\services\
+#Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\[entity-d]\services\
 #Template::[entity-d].entity.service.ts
-#Path::D:\Personal\Development\Test AimTech\[entity-d]\services\
+#Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\[entity-d]\services\
 #Template::[entity-d].model.ts
-#Path::D:\Personal\Development\Test AimTech\[entity-d]\models\
+#Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\[entity-d]\models\
 #Template::[entity-d].resolver.ts
-#Path::D:\Personal\Development\Test AimTech\[entity-d]\services\
+#Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\[entity-d]\services\
 
 Database Tables
 #Table::SubCategory
