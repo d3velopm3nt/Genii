@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace GENX.Generator
 {
@@ -69,8 +70,11 @@ namespace GENX.Generator
             return BuildFileX(file);
         }
 
-        public bool Generate(string fullPath)
+        public bool Generate(string path,string fileName)
         {
+            string fullPath = $"{path}\\{fileName}";
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
             FileHelper.WriteToFile(fullPath, FileText);
             return true;
         }
