@@ -321,7 +321,8 @@ namespace DALX_UI.UserControls
         public void GetUpdatedMessageStatus(string template, string table, string result)
         {
             
-            if (dgvGenerateFiles.Rows[GenIndex].Cells["Temp"].Value.ToString() == template && dgvGenerateFiles.Rows[GenIndex].Cells["Table"].Value.ToString() == table)
+               // dgvGenerateFiles.Rows[GenIndex].Cells["Temp"].Value.ToString() == template && 
+            if (dgvGenerateFiles.Rows[GenIndex].Cells["Table"].Value.ToString() == table)
             {
                 dgvGenerateFiles.Rows[GenIndex].Cells["DT"].Value = DateTime.Now;
                 dgvGenerateFiles.Rows[GenIndex].Cells["Comment"].Value = result;

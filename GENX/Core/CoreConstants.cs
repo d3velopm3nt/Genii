@@ -9,7 +9,7 @@ namespace GENX.Core
    public static class CoreConstants
     {
         /// <summary>
-        /// This is update case table name
+        /// This is normal case table name
         /// </summary>
         public static string Entity = "[Entity]";
         public static string EntityUpper = "[ENTITY]";
@@ -21,5 +21,6 @@ namespace GENX.Core
         public static string Property = "[Property]";
         public static string LinkedProperty = "[LinkedProperty]";
         public static string DataType = "[DataType]";
+        public static string DefaultValue = "[DefaultValue]";
    }
 }

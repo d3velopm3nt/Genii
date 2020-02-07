@@ -69,7 +69,7 @@ namespace GENX.Generator.Snippet
                     if (file.FileText.Contains(fullPropSnipString))
                     {
                         file.FileText = file.FileText.Replace(fullPropSnipString, AddProperties(snippet));
-                        break;
+                        //break;
                     }
                 }
 
@@ -86,8 +86,9 @@ namespace GENX.Generator.Snippet
                 if (!CoreHelper.BasePropertyList().Any(x => x.Contains(column.ColumnName)))
                 {
                         newText += GetSnippetText(snippetText, propertyType)
-                            .Replace(CoreConstants.DataType, column.DataType)
                             .Replace(CoreConstants.Property, column.ColumnName)
+                            .Replace(CoreConstants.DataType, column.DataType)
+                            .Replace(CoreConstants.DefaultValue,column.DefaultValue)
                             .ReplaceEntityTag(Table.TableName)+ Environment.NewLine;
 
                     if (column.IsLinkedProperty)                  
