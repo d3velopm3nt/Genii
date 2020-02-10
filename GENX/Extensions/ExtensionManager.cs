@@ -16,6 +16,7 @@ namespace GENX.Extensions
     public class ExtensionManager
     {
         private ProjectFile _projectFile;
+        private static string allText ="";
         public static List<ExtensionFile> Extensions { get; set; }
         public ExtensionManager(ProjectFile projectFile)
         {
@@ -44,15 +45,16 @@ namespace GENX.Extensions
             return extensions;
         }
 
-        private static bool GenerateExtensionCode(ExtensionLine line, string tableName,out string allText)
+        private static bool GenerateExtensionCode(ExtensionLine line, string tableName)
         {
-            allText = "";
+            
             bool update = false;
           
-                string fullName = $"//[{line.Name}]";
+                string fullName = $"//{line.Name}";
                 if (allText.Contains(fullName))
                 {
                     string snippetText = ProjectHelper.Snippets.Where(x => x.FileName == line.Snippet).FirstOrDefault()?.FileText;
+                
                     snippetText = SnippetHelper.GetSnippetText(snippetText, line.ID).ReplaceEntityTag(tableName);
 
                     if (!allText.Contains(snippetText))
@@ -75,10 +77,10 @@ namespace GENX.Extensions
                     foreach (TableEntity table in _projectFile.TableList)
                     {
                         path = extension.FilePath.Replace("[Entity]", table.TableName);
-                        string allText = FileHelper.ReadFile(path);
+                        allText = FileHelper.ReadFile(path);
                         bool update = false;
                         foreach(var line in extension.Extensions)
-                       update = GenerateExtensionCode(line, table.TableName, out allText);
+                       update = GenerateExtensionCode(line, table.TableName);
                         if (update)
                             FileHelper.WriteToFile(path, allText);
                     }
@@ -93,11 +95,11 @@ namespace GENX.Extensions
         {
             foreach (ExtensionFile extension in Extensions)
             {
-                string allText = FileHelper.ReadFile(extension.FilePath);
+                allText = FileHelper.ReadFile(extension.FilePath);
                 bool update = false;
                 foreach(var ext in extension.Extensions)
                     if(ext.IsLink)
-                        update = GenerateExtensionCode(ext, linkedTable, out allText);
+                        update = GenerateExtensionCode(ext, linkedTable);
                               
                     if (update)
                         FileHelper.WriteToFile(extension.FilePath, allText);

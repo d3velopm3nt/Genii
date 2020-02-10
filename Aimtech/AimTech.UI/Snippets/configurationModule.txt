@@ -1,0 +1,28 @@
+imports-->
+import { [Entity]ListComponent } from './[entity-d]/[entity-d]-list/[entity-d]-list.component';
+import { [Entity]ConfigComponent } from './[entity-d]/[entity-d]-config/[entity-d]-config.component';
+import { [Entity]EntityService } from './[entity-d]/services/[entity-d].entity.service';
+import { [Entity]DataService } from './[entity-d]/services/[entity-d].data.service';
+<--
+
+entityMetaDataSnippet-->
+[Entity]: {},
+<--
+
+declareComponentsSnippet-->
+[Entity]ListComponent,
+[Entity]ConfigComponent,
+<--
+
+declareProvidersSnippnet-->
+[Entity]EntityService,
+[Entity]DataService,
+<--
+
+parameterDataServiceSnippet-->
+private [Entity-cc]DataService:[Entity]DataService,
+<--
+
+registerDataService-->
+[Entity]:[Entity-cc]DataService,
+<--

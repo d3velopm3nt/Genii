@@ -1,0 +1,2 @@
+[entity-cc]List: '/configuration/[entity-d]-list',
+[entity-cc]Config: '/configuration/[entity-d]-config',

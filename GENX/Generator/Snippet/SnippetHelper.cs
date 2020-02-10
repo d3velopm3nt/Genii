@@ -95,8 +95,7 @@ namespace GENX.Generator.Snippet
                         //Generate Extension for linked property
                         //Loop through table relationship tables.
                         //Check if there is any extention that used for linked properties.
-                        Extensions.ExtensionManager.RunLinkedExtensions(column.LinkedTable);
-                    
+                        Extensions.ExtensionManager.RunLinkedExtensions(column.LinkedTable);                    
                 }
             }
             return newText;
@@ -112,13 +111,13 @@ namespace GENX.Generator.Snippet
                 string[] lines = snippetText.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                 foreach (var line in lines)
                 {
-                    if (line.Contains(SnippetContants.SnippetEnd))
+                    if (line.Contains(SnippetContants.SnippetEnd) && snippetStarted)
                         return snippetText;
                     else if (snippetStarted)
-                        snippetText += line;
+                        snippetText += line + Environment.NewLine;
                     else if (line.Contains(snippetName + SnippetContants.SnippetStart))
                     {
-                        snippetText = line.Replace(snippetName, "");
+                        snippetText = line.Replace(snippetName + SnippetContants.SnippetStart, "");
                         snippetStarted = true;
                     }
                     

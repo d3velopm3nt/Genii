@@ -1,0 +1,18 @@
+Routing-->
+{
+    path: AppRoutes.[entity-cc]List,
+    component:[Entity]ListComponent,
+    resolve: {
+      devices:[Entity]Resolver
+    }
+  },
+  {
+    path: 'configuration/[entity-cc]-config',
+    component: [Entity]ConfigComponent
+  },
+<--
+
+ImportComps-->
+import { [Entity]ListComponent } from './[entity-d]/[entity-d]-list/[entity-d]-list.component';
+import { [Entity]ConfigComponent } from './[entity-d]/[entity-d]-config/[entity-d]-config.component';
+<--

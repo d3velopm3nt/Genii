@@ -1,0 +1,21 @@
+##Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\environments\environment.ts
+[environment]::environmentSnippet
+##END
+
+##Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\configuration-routing.module.ts
+[Routes]::Routes::Routing
+[ImportComponents]::Routes:ImportComps
+##END
+
+##Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\shared\constants\app-routes.ts
+[AppRoutes]::AppRoutes
+##END
+
+##Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\configuration.module.ts
+[EntityImports]::configurationModule::imports
+[EntityMetaData]::configurationModule::entityMetaDataSnippet
+[DeclareComponents]::configurationModule::declareComponentsSnippet
+[DeclareProviders]::configurationModule::declareProvidersSnippnet
+[ParameterDataService]::configurationModule::parameterDataServiceSnippet
+[RegisterDataService]::configurationModule::registerDataService
+##END

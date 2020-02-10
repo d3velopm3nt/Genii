@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { environment } from 'environments/environment';
 import { Router } from '@angular/router';
-import { [Entity] } from '../models/[entity:d].model';
+import { [Entity] } from '../models/[entity-d].model';
 
 @Injectable()
 export class [Entity]DataService extends DefaultDataService<[Entity]>{
@@ -16,7 +16,7 @@ export class [Entity]DataService extends DefaultDataService<[Entity]>{
     }
 
     getWithQuery(params):Observable<[Entity][]>{
-        var url = `${environment.[entity]}`;
+        var url = `${environment.[entity-cc]}`;
         
          return this.http.get<[Entity][]>(`${url}/${params.Id}`).pipe(      
         map(res=> res['responseData']));
@@ -24,7 +24,7 @@ export class [Entity]DataService extends DefaultDataService<[Entity]>{
 
 
     getAll():Observable<[Entity][]>{
-        var url = `${environment.[entity]}`;
+        var url = `${environment.[entity-cc]}`;
     
         return this.http.get<[Entity][]>(`${url}`).pipe(
             map(res=>  res['responseData'] )
@@ -34,14 +34,14 @@ export class [Entity]DataService extends DefaultDataService<[Entity]>{
 
     add([Entity]:any):Observable<[Entity]>{
       
-     return this.http.post(environment.[entity],[Entity]).pipe(
+     return this.http.post(environment.[entity-cc],[Entity]).pipe(
          map(res => res['responseData']
          )
      );   
     }
 
     update([Entity]:any):Observable<[Entity]>{
-        return this.http.put(environment.[entity],[Entity].changes).pipe(
+        return this.http.put(environment.[entity-cc],[Entity].changes).pipe(
             map(res => res['responseData'])
         );
     }
