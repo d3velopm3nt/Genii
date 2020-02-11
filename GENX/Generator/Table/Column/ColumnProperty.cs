@@ -23,7 +23,14 @@ namespace GENX.Generator.Table.Column
                 return _file.GetDataType(dbType);
             }
         }
-        public string DefaultValue { get; set; }
+        private string _defaultvalue;
+        public string DefaultValue
+        {
+            get
+            {
+                return _file.GetDefaultValue(_defaultvalue, dbType);
+            }
+        }
         #endregion
 
         #region Constructors
@@ -35,7 +42,7 @@ namespace GENX.Generator.Table.Column
         {
             this.ColumnName = columnName;
             this.dbType = dataType;
-            this.DefaultValue = defaultValue;
+            this._defaultvalue = defaultValue;
             this._file = file;
             this.LinkedTable = linkedTable;
             this.IsLinkedProperty = isLinked;

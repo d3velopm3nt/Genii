@@ -112,7 +112,7 @@ namespace GENX.Generator.Snippet
                 foreach (var line in lines)
                 {
                     if (line.Contains(SnippetContants.SnippetEnd) && snippetStarted)
-                        return snippetText;
+                        break;
                     else if (snippetStarted)
                         snippetText += line + Environment.NewLine;
                     else if (line.Contains(snippetName + SnippetContants.SnippetStart))
@@ -120,10 +120,8 @@ namespace GENX.Generator.Snippet
                         snippetText = line.Replace(snippetName + SnippetContants.SnippetStart, "");
                         snippetStarted = true;
                     }
-                    
-                   
                 }
-                return snippetText;
+                return snippetText.TrimEnd(Environment.NewLine.ToCharArray());
             }
         }
 

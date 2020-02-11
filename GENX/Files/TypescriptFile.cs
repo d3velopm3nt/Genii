@@ -62,5 +62,35 @@ namespace GENX.Files
             }
             return datatype;
         }
+
+        public override string GetDefaultValue(string value,string dbType)
+        {
+            string defaultValue = value;
+            switch (dbType)
+            {
+                case "uniqueidentifier":
+                case "varchar":
+                case "nvarchar":
+                case "text":
+                case "nchar":
+                    defaultValue = @"""""";
+                    break;
+                case "bit":
+                    defaultValue = value == "1" || value == "true" ? "true" : "false";
+                    break;
+                case "timestamp":
+                case "datetime":
+                case "datetime2":
+                    defaultValue = "New Date";
+                    break;
+                case "real":
+                case "decimal":
+                case "smallint":
+                case "bigint":
+                    defaultValue = "0";
+                    break;
+            }
+            return defaultValue;
+        }
     }
 }

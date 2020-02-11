@@ -27,6 +27,8 @@ namespace GENX.Interfaces
         List<SnippetFile> Snippets { get; set; }
 
         string GetDataType(string dbType);
+
+        string GetDefaultValue(string value,string dbType );
         #endregion
 
         #region Methods

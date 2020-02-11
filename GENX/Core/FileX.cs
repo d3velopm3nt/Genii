@@ -98,6 +98,11 @@ namespace GENX.Generator
             return "";
         }
 
+        public virtual string GetDefaultValue(string value,string dbType)
+        {
+            return "";
+        }
+
         #endregion
     }
 }
