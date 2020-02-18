@@ -38,7 +38,7 @@ namespace GENX.Generator
         public static string AddSpaceInEntity(this StringBuilder sBuilder,string table)
         {
             sBuilder.Replace(CoreConstants.EntitySpace, table.AddSpacesBetweenWords());
-            sBuilder.Replace(CoreConstants.EntitySpace.ToUpper(), table.AddSpacesBetweenWords().AddSpacesBetweenWords());
+            sBuilder.Replace(CoreConstants.EntitySpace.ToUpper(), table.AddSpacesBetweenWords().ToUpper());
             sBuilder.Replace(CoreConstants.EntitySpace.ToLower(), table.AddSpacesBetweenWords().ToLower());
             return sBuilder.ToString();
         }

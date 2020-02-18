@@ -25,3 +25,4 @@ namespace GENX.Core
         public static string DefaultValue = "[DefaultValue]";
    }
 }
+

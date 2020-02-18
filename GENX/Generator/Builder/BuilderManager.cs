@@ -29,16 +29,17 @@ namespace GENX.Generator.Builder
             {
                 foreach (IXFile template in projectFile.TemplateList)
                 {
+
                     foreach (TableEntity table in projectFile.TableList)
                     {
+                        var temp = template;
                         //Change path to entity name folder if [Entity] exists in path
-                        template.TargetPath =  template.TargetPath.ReplaceEntityTag( table.TableName);
+                        temp.TargetPath = temp.TargetPath.ReplaceEntityTag( table.TableName);
 
-                        template.FileName = template.FileName.ReplaceEntityTag(table.TableName);
-                        BuilderHelper.BuildEntityTemplateFile(template, table, projectFile.ProjectName).Generate(template.TargetPath, template.FileName);
+                        temp.FileName = temp.FileName.ReplaceEntityTag(table.TableName);
+                        BuilderHelper.BuildEntityTemplateFile(temp, table, projectFile.ProjectName).Generate(temp.TargetPath, temp.FileName);
 
-                        form.GetUpdatedMessageStatus(template.FileName, table.TableName, "File generated successfully");
-
+                        form.GetUpdatedMessageStatus(temp.FileName, table.TableName, "File generated successfully");
                     }
                 }
             }

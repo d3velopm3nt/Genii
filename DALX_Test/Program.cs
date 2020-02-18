@@ -14,10 +14,12 @@ namespace DALX_Test
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter work in camelcase");
+            Console.WriteLine("Enter word");
             var result = Console.ReadLine();
-            result = result.ReplaceWithDash();
-            Console.WriteLine(result.ToLower());
+            string placeholder = "[Entity ]";
+            string tablename = "SubCategoryTest";
+            result =  result.Replace(placeholder, tablename.AddSpacesBetweenWords().ToUpper());
+            Console.WriteLine(result);
             Console.ReadLine();
             
         }
