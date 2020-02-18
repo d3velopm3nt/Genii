@@ -81,7 +81,7 @@ namespace GENX.Files
                 case "timestamp":
                 case "datetime":
                 case "datetime2":
-                    defaultValue = "New Date";
+                    defaultValue = "new Date";
                     break;
                 case "real":
                 case "decimal":

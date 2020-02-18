@@ -38,8 +38,8 @@ namespace GENX.Generator
         public static string AddSpaceInEntity(this StringBuilder sBuilder,string table)
         {
             sBuilder.Replace(CoreConstants.EntitySpace, table.AddSpacesBetweenWords());
-            sBuilder.Replace(CoreConstants.EntityUpper, table.ToUpper().AddSpacesBetweenWords());
-            sBuilder.Replace(CoreConstants.EntityLower, table.ToLower().AddSpacesBetweenWords());
+            sBuilder.Replace(CoreConstants.EntitySpace.ToUpper(), table.AddSpacesBetweenWords().AddSpacesBetweenWords());
+            sBuilder.Replace(CoreConstants.EntitySpace.ToLower(), table.AddSpacesBetweenWords().ToLower());
             return sBuilder.ToString();
         }
 
@@ -53,12 +53,30 @@ namespace GENX.Generator
 
         public static string ReplaceEntityCC(this StringBuilder sBuilder,string table)
         {
-            sBuilder.Replace(CoreConstants.EntityCamelCase.ToLower(), table.ReplaceWithCamelCase().ToLower());
-            sBuilder.Replace(CoreConstants.EntityCamelCase, table.ReplaceWithCamelCase().ToLower());
+            sBuilder.Replace(CoreConstants.EntityCamelCase.ToLower(), table.ReplaceWithCamelCase());
+            sBuilder.Replace(CoreConstants.EntityCamelCase, table.ReplaceWithCamelCase());
             sBuilder.Replace(CoreConstants.EntityCamelCaseSpace, table.ReplaceWithCamelCase().AddSpacesBetweenWords());
 
 
             return sBuilder.ToString();
+        }
+
+        public static string ReplaceProperty(this StringBuilder sBuilder, string table)
+        {
+            sBuilder.Replace(CoreConstants.Property, table);
+            sBuilder.Replace(CoreConstants.PropertyCamelCase, table.ReplaceWithCamelCase());
+            sBuilder.Replace(CoreConstants.PropertyCamelCase.ToLower(), table.ReplaceWithCamelCase());
+
+            return sBuilder.ToString();
+        }
+
+        public static string ReplaceProperty(this string text, string table)
+        {
+            text = text.Replace(CoreConstants.Property, table);
+            text = text.Replace(CoreConstants.PropertyCamelCase, table.ReplaceWithCamelCase());
+            text = text.Replace(CoreConstants.PropertyCamelCase.ToLower(), table.ReplaceWithCamelCase());
+
+            return text;
         }
 
     }

@@ -85,8 +85,8 @@ namespace GENX.Generator.Snippet
                 string propertyType = column.IsLinkedProperty ? SnippetContants.LinkedProperty : SnippetContants.Property;
                 if (!CoreHelper.BasePropertyList().Any(x => x.Contains(column.ColumnName)))
                 {
-                        newText += GetSnippetText(snippetText, propertyType)
-                            .Replace(CoreConstants.Property, column.ColumnName)
+                    newText += GetSnippetText(snippetText, propertyType)
+                            .ReplaceProperty(column.ColumnName)
                             .Replace(CoreConstants.DataType, column.DataType)
                             .Replace(CoreConstants.DefaultValue,column.DefaultValue)
                             .ReplaceEntityTag(Table.TableName)+ Environment.NewLine;
