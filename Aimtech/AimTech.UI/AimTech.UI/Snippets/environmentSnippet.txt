@@ -1,0 +1,1 @@
+[entity-cc]: apiUrl  + "[entity]",
