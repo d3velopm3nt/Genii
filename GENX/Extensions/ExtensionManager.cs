@@ -54,7 +54,8 @@ namespace GENX.Extensions
                 if (allText.Contains(fullName))
                 {
                     string snippetText = ProjectHelper.Snippets.Where(x => x.FileName == line.Snippet).FirstOrDefault()?.FileText;
-                
+                if (string.IsNullOrEmpty(snippetText))
+                    return false;
                     snippetText = SnippetHelper.GetSnippetText(snippetText, line.ID).ReplaceEntityTag(tableName);
 
                     if (!allText.Contains(snippetText))

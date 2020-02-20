@@ -78,7 +78,8 @@ namespace GENX.Generator.Project
             if (file.TemplateList != null)
                 foreach (IXFile temp in file.TemplateList)
                 {
-                    projectFile += "#Template::" + temp.FileName + Environment.NewLine +
+                    string fullname = temp.IsActive ? "!" + temp.FileName : temp.FileName;
+                    projectFile += "#Template::" +  fullname + Environment.NewLine +
                         "#Path::" + temp.TargetPath + Environment.NewLine;
 
                 }
@@ -136,6 +137,7 @@ namespace GENX.Generator.Project
                             {
                                 template = Language.LanguageHelper.GetFileFromExtention(lineText.GetFileExtention(),projectFile);
                                 template.FileName = lineText;
+                                template.IsActive = lineText.StartsWith("!") ? false : true;
                                 template.FullPath = path + @"\Templates\" + lineText;
 
                             }

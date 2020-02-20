@@ -22,6 +22,8 @@ namespace GENX.Interfaces
          string FileExtension { get; set; }
         string CommentLine { get;}
 
+        bool IsActive { get; set; }
+
         string TargetPath { get; set; }
         List<GenTag> GenTagList { get; set; }
         List<SnippetFile> Snippets { get; set; }

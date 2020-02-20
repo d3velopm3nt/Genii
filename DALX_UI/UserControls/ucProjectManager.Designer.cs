@@ -43,8 +43,6 @@
             this.btnSelectPath = new System.Windows.Forms.Button();
             this.lblTemplatePath = new System.Windows.Forms.Label();
             this.dgvTemplates = new System.Windows.Forms.DataGridView();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolbuttonRun = new System.Windows.Forms.ToolStripButton();
@@ -56,16 +54,19 @@
             this.Table = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtpath = new System.Windows.Forms.TextBox();
-            this.btnSavePath = new System.Windows.Forms.Button();
-            this.btnConfigure = new System.Windows.Forms.Button();
-            this.btnSaveChanges = new System.Windows.Forms.Button();
-            this.lblSaveChanges = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dgvExtensions = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtpath = new System.Windows.Forms.TextBox();
+            this.btnSavePath = new System.Windows.Forms.Button();
+            this.btnConfigure = new System.Windows.Forms.Button();
+            this.btnSaveChanges = new System.Windows.Forms.Button();
+            this.lblSaveChanges = new System.Windows.Forms.Label();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Enable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -224,31 +225,21 @@
             // 
             // dgvTemplates
             // 
-            this.dgvTemplates.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvTemplates.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTemplates.BackgroundColor = System.Drawing.Color.White;
             this.dgvTemplates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTemplates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column6,
-            this.Column7});
-            this.dgvTemplates.Location = new System.Drawing.Point(9, 64);
+            this.Column7,
+            this.Enable});
+            this.dgvTemplates.Location = new System.Drawing.Point(9, 35);
             this.dgvTemplates.Name = "dgvTemplates";
             this.dgvTemplates.RowHeadersVisible = false;
-            this.dgvTemplates.Size = new System.Drawing.Size(661, 233);
+            this.dgvTemplates.Size = new System.Drawing.Size(661, 262);
             this.dgvTemplates.TabIndex = 0;
             this.dgvTemplates.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTemplates_CellClick);
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Template";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 200;
-            // 
-            // Column7
-            // 
-            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column7.HeaderText = "Generate Path";
-            this.Column7.Name = "Column7";
             // 
             // tabPage3
             // 
@@ -357,6 +348,53 @@
             this.Comment.HeaderText = "Comment";
             this.Comment.Name = "Comment";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.dgvExtensions);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(676, 303);
+            this.tabPage4.TabIndex = 4;
+            this.tabPage4.Text = "Extensions";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dgvExtensions
+            // 
+            this.dgvExtensions.AllowUserToAddRows = false;
+            this.dgvExtensions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvExtensions.BackgroundColor = System.Drawing.Color.White;
+            this.dgvExtensions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvExtensions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn4});
+            this.dgvExtensions.Location = new System.Drawing.Point(6, 19);
+            this.dgvExtensions.Name = "dgvExtensions";
+            this.dgvExtensions.RowHeadersVisible = false;
+            this.dgvExtensions.Size = new System.Drawing.Size(664, 265);
+            this.dgvExtensions.TabIndex = 1;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Existing File";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Total Extensions";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Comment";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
             // txtpath
             // 
             this.txtpath.Enabled = false;
@@ -407,52 +445,24 @@
             this.lblSaveChanges.Text = "Save Results";
             this.lblSaveChanges.Visible = false;
             // 
-            // tabPage4
+            // Column6
             // 
-            this.tabPage4.Controls.Add(this.dgvExtensions);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(676, 303);
-            this.tabPage4.TabIndex = 4;
-            this.tabPage4.Text = "Extensions";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.Column6.HeaderText = "Template";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 200;
             // 
-            // dgvExtensions
+            // Column7
             // 
-            this.dgvExtensions.AllowUserToAddRows = false;
-            this.dgvExtensions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvExtensions.BackgroundColor = System.Drawing.Color.White;
-            this.dgvExtensions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvExtensions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn4});
-            this.dgvExtensions.Location = new System.Drawing.Point(6, 19);
-            this.dgvExtensions.Name = "dgvExtensions";
-            this.dgvExtensions.RowHeadersVisible = false;
-            this.dgvExtensions.Size = new System.Drawing.Size(664, 265);
-            this.dgvExtensions.TabIndex = 1;
+            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column7.HeaderText = "Generate Path";
+            this.Column7.Name = "Column7";
             // 
-            // dataGridViewTextBoxColumn1
+            // Enable
             // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Existing File";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Total Extensions";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Comment";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.Enable.HeaderText = "Enable";
+            this.Enable.Name = "Enable";
+            this.Enable.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Enable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ucProjectManager
             // 
@@ -516,8 +526,6 @@
         private System.Windows.Forms.Label lblSaveChanges;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.ToolStripButton toolbuttonRefresh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Temp;
         private System.Windows.Forms.DataGridViewTextBoxColumn Table;
         private System.Windows.Forms.DataGridViewTextBoxColumn DT;
@@ -527,5 +535,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Enable;
     }
 }

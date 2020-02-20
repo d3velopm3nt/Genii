@@ -176,7 +176,7 @@ namespace DALX_UI.UserControls
                 IXFile template = ProjectFile.TemplateList.Where(x => x.FileName == temp).FirstOrDefault();
                 if (template == null)
                     template = new TemplateFile();
-                dgvTemplates.Rows.Add(temp, template.TargetPath);
+                dgvTemplates.Rows.Add(temp, template.TargetPath,template.IsActive);
             }
         }
 

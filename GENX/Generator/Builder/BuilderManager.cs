@@ -9,6 +9,7 @@ using GENX.Generator.Template;
 using GENX.Interfaces;
 using System;
 using GENX.Generator.Helpers;
+using System.Linq;
 
 namespace GENX.Generator.Builder
 {
@@ -27,7 +28,7 @@ namespace GENX.Generator.Builder
             projectFile = form.ProjectFile;
             try
             {
-                foreach (IXFile template in projectFile.TemplateList)
+                foreach (IXFile template in projectFile.TemplateList.Where(x=>x.IsActive))
                 {
 
                     foreach (TableEntity table in projectFile.TableList)
