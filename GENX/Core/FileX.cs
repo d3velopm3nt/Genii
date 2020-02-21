@@ -20,6 +20,7 @@ namespace GENX.Generator
 
         public virtual string CommentLine { get;  }
 
+        public bool IsActive { get; set; }
         public string TargetPath { get; set; }
 
         public string FriendlyName

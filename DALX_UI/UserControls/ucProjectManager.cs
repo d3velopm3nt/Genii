@@ -126,6 +126,7 @@ namespace DALX_UI.UserControls
                     IXFile file = LanguageHelper.GetFileFromExtention(fileExt,ProjectFile);
                     file.FileName = fileExt;
                     file.TargetPath = dgvTemplates.Rows[i].Cells[1].Value.ToString();
+                    file.IsActive = Convert.ToBoolean( dgvTemplates.Rows[i].Cells[2].Value);
                     list.Add(file);
                 }
             }
@@ -173,7 +174,7 @@ namespace DALX_UI.UserControls
             dgvTemplates.Rows.Clear();
             foreach (string temp in templates)
             {
-                IXFile template = ProjectFile.TemplateList.Where(x => x.FileName == temp).FirstOrDefault();
+                IXFile template = ProjectFile.TemplateList.Where(x => x.FileName.Contains(temp)).FirstOrDefault();
                 if (template == null)
                     template = new TemplateFile();
                 dgvTemplates.Rows.Add(temp, template.TargetPath,template.IsActive);

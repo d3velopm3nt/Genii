@@ -80,6 +80,17 @@ namespace DALX.Core
                 "UpdatedDate"
             };
         }
+
+        public static List<string> IgnoreToDisplay()
+        {
+            return new List<string>()
+            {
+                "CreatedOn",
+                "CreatedBy",
+                "UpdatedOn",
+                "UpdatedBy"
+            };
+        }
         
     }
 }

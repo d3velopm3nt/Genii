@@ -78,7 +78,7 @@ namespace GENX.Generator.Project
             if (file.TemplateList != null)
                 foreach (IXFile temp in file.TemplateList)
                 {
-                    string fullname = temp.IsActive ? "!" + temp.FileName : temp.FileName;
+                    string fullname = !temp.IsActive ? "!" + temp.FileName : temp.FileName;
                     projectFile += "#Template::" +  fullname + Environment.NewLine +
                         "#Path::" + temp.TargetPath + Environment.NewLine;
 
@@ -162,7 +162,7 @@ namespace GENX.Generator.Project
             }
             catch (Exception ex)
             {
-               
+                throw new Exception(ex.Message);
             }
             return projectFile;
         }
