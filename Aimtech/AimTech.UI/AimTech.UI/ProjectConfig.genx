@@ -24,8 +24,9 @@
 #Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\[entity-d]\services\
 #Template::[entity-d].entity.service.ts
 #Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\[entity-d]\services\
-#Template::[entity-d].model.ts
+#Template::![entity-d].model.ts
 #Path::D:\Personal\Development\Source Code\Aimtech Solution\Aimtech.Admin.UI\src\app\configuration\[entity-d]\models\
 
 Database Tables
 #Table::SubCategory
+#Table::CategoryType
