@@ -21,6 +21,7 @@ namespace GENX.Generator
             StringBuilder sBuilder = new StringBuilder(text);
             //No Change
             sBuilder.Replace(CoreConstants.Entity, table);
+            string constring = sBuilder.ToString();
             //Upper Case
             sBuilder.Replace(CoreConstants.EntityUpper, table);
             //Lower Case

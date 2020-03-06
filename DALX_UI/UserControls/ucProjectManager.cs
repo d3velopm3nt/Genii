@@ -334,5 +334,10 @@ namespace DALX_UI.UserControls
 
         }
         #endregion
+
+        private void btnGenEx_Click(object sender, EventArgs e)
+        {
+            this._extensionManager.RunExtensions();
+        }
     }
 }

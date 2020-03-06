@@ -34,6 +34,9 @@ namespace GENX.Files
             }
         }
 
-    
+        public override IXFile Clone()
+        {
+            return new HtmlFile(this);
+        }
     }
 }

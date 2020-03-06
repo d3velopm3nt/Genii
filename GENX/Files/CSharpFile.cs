@@ -65,5 +65,11 @@ namespace GENX.Files
             }
             return datatype;
         }
+
+        public override IXFile Clone()
+        {
+            return new CSharpFile(this);
+        }
+
     }
 }

@@ -30,13 +30,12 @@ namespace GENX.Generator.Builder
             {
                 foreach (IXFile template in projectFile.TemplateList.Where(x=>x.IsActive))
                 {
-
+                   
                     foreach (TableEntity table in projectFile.TableList)
                     {
-                        var temp = template;
+                        var temp = template.Clone();
                         //Change path to entity name folder if [Entity] exists in path
                         temp.TargetPath = temp.TargetPath.ReplaceEntityTag( table.TableName);
-
                         temp.FileName = temp.FileName.ReplaceEntityTag(table.TableName);
                         BuilderHelper.BuildEntityTemplateFile(temp, table, projectFile.ProjectName).Generate(temp.TargetPath, temp.FileName);
 

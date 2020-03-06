@@ -43,6 +43,9 @@
             this.btnSelectPath = new System.Windows.Forms.Button();
             this.lblTemplatePath = new System.Windows.Forms.Label();
             this.dgvTemplates = new System.Windows.Forms.DataGridView();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Enable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolbuttonRun = new System.Windows.Forms.ToolStripButton();
@@ -64,9 +67,7 @@
             this.btnConfigure = new System.Windows.Forms.Button();
             this.btnSaveChanges = new System.Windows.Forms.Button();
             this.lblSaveChanges = new System.Windows.Forms.Label();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Enable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnGenEx = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -241,6 +242,25 @@
             this.dgvTemplates.TabIndex = 0;
             this.dgvTemplates.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTemplates_CellClick);
             // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Template";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 200;
+            // 
+            // Column7
+            // 
+            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column7.HeaderText = "Generate Path";
+            this.Column7.Name = "Column7";
+            // 
+            // Enable
+            // 
+            this.Enable.HeaderText = "Enable";
+            this.Enable.Name = "Enable";
+            this.Enable.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Enable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.toolStrip1);
@@ -350,6 +370,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.btnGenEx);
             this.tabPage4.Controls.Add(this.dgvExtensions);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -371,10 +392,10 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn4});
-            this.dgvExtensions.Location = new System.Drawing.Point(6, 19);
+            this.dgvExtensions.Location = new System.Drawing.Point(6, 35);
             this.dgvExtensions.Name = "dgvExtensions";
             this.dgvExtensions.RowHeadersVisible = false;
-            this.dgvExtensions.Size = new System.Drawing.Size(664, 265);
+            this.dgvExtensions.Size = new System.Drawing.Size(664, 249);
             this.dgvExtensions.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1
@@ -445,24 +466,15 @@
             this.lblSaveChanges.Text = "Save Results";
             this.lblSaveChanges.Visible = false;
             // 
-            // Column6
+            // btnGenEx
             // 
-            this.Column6.HeaderText = "Template";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 200;
-            // 
-            // Column7
-            // 
-            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column7.HeaderText = "Generate Path";
-            this.Column7.Name = "Column7";
-            // 
-            // Enable
-            // 
-            this.Enable.HeaderText = "Enable";
-            this.Enable.Name = "Enable";
-            this.Enable.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Enable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnGenEx.Location = new System.Drawing.Point(9, 6);
+            this.btnGenEx.Name = "btnGenEx";
+            this.btnGenEx.Size = new System.Drawing.Size(148, 23);
+            this.btnGenEx.TabIndex = 11;
+            this.btnGenEx.Text = "Generate Extensions";
+            this.btnGenEx.UseVisualStyleBackColor = true;
+            this.btnGenEx.Click += new System.EventHandler(this.btnGenEx_Click);
             // 
             // ucProjectManager
             // 
@@ -538,5 +550,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Enable;
+        private System.Windows.Forms.Button btnGenEx;
     }
 }

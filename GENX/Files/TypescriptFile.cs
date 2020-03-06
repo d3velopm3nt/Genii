@@ -57,6 +57,7 @@ namespace GENX.Files
                 case "decimal":
                 case "smallint":
                 case "bigint":
+                case "int":
                     datatype = "number";
                     break;
             }
@@ -87,10 +88,16 @@ namespace GENX.Files
                 case "decimal":
                 case "smallint":
                 case "bigint":
+                case "int":
                     defaultValue = "0";
                     break;
             }
             return defaultValue;
+        }
+
+        public override IXFile Clone()
+        {
+            return new TypescriptFile(this);
         }
     }
 }

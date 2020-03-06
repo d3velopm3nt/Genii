@@ -37,7 +37,7 @@ namespace GENX.Interfaces
         IXFile Build(IXFile xFile);
         bool Generate(string path,string fileName);
         void Load(string path);
-        
+        IXFile Clone();
         #endregion
     }
 }

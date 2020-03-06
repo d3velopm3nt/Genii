@@ -86,6 +86,7 @@ namespace GENX.Generator
             //this.SolutionName = file.SolutionName;
             //this.ProjectName = file.ProjectName;
             this.FullPath = file.FullPath;
+            this.TargetPath = file.TargetPath;
             return this; 
         }
 
@@ -104,6 +105,10 @@ namespace GENX.Generator
             return "";
         }
 
-        #endregion
+        public virtual IXFile Clone()
+        {
+            return new FileX(this);
+        }
+            #endregion
     }
 }
