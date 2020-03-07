@@ -47,7 +47,7 @@ You can add extensions in existing files using adding the extension identifer in
 There is an extenions file where all the extensions are listed and path of existing file.
 Code Example
 ```
-ExtensionID::snippetname:SnippeId (Optional)
+ExtensionID::SnippetName::SnippetId (Optional)
 ```
 # DALX
 The DALX library can be implmented on any model/entity of a sql table manually or use the GENX application to generate the table entity with the DALX inherited.
