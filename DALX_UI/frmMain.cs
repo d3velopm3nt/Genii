@@ -3,6 +3,7 @@ using DALX_UI.Forms;
 using DALX_UI.UserControls;
 using GENX.Core;
 using GENX.Generator.Library;
+using GENX.Generator.Project;
 using GENX.Generator.Solution;
 using System;
 using System.Collections.Generic;
@@ -303,8 +304,29 @@ namespace DALX_UI
             StatuslblMain.Text = status;
         }
 
+
         #endregion
 
+        private void existingProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            DialogResult result = dialog.ShowDialog();
+            if(result == DialogResult.OK && !string.IsNullOrWhiteSpace(dialog.SelectedPath))
+            {
+                string filePath = dialog.SelectedPath;
+                FileInfo file = new FileInfo(filePath);
+                ProjectFile project = new ProjectFile();
+                project.TargetPath = filePath;
 
+                ProjectManager = new ucProjectManager(this, project);
+                ProjectManager.LoadManager();
+
+                    }
+        }
+
+        private void contextMenuTreeView_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }

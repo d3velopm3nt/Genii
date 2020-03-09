@@ -31,6 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panelMain = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.treeLibrary = new System.Windows.Forms.TreeView();
+            this.contextMenuTreeView = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.newViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.openInWindowsExporerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openTargetProjectFodlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panelManager = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -42,13 +50,6 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolItemFile = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.treeLibrary = new System.Windows.Forms.TreeView();
-            this.contextMenuTreeView = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.newViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.openInWindowsExporerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openTargetProjectFodlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.fiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,16 +57,16 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatuslblMain = new System.Windows.Forms.ToolStripStatusLabel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.existingProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMain.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
-            this.contextMenuTreeView.SuspendLayout();
-            this.menuStrip2.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.contextMenuTreeView.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMain
@@ -79,6 +80,86 @@
             this.panelMain.Size = new System.Drawing.Size(932, 518);
             this.panelMain.TabIndex = 1;
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(3, 43);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.treeLibrary);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.panelManager);
+            this.splitContainer1.Size = new System.Drawing.Size(924, 449);
+            this.splitContainer1.SplitterDistance = 208;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // treeLibrary
+            // 
+            this.treeLibrary.ContextMenuStrip = this.contextMenuTreeView;
+            this.treeLibrary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeLibrary.ImageIndex = 0;
+            this.treeLibrary.ImageList = this.imageList1;
+            this.treeLibrary.Location = new System.Drawing.Point(0, 0);
+            this.treeLibrary.Name = "treeLibrary";
+            this.treeLibrary.SelectedImageIndex = 0;
+            this.treeLibrary.Size = new System.Drawing.Size(208, 449);
+            this.treeLibrary.TabIndex = 0;
+            this.treeLibrary.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeLibrary_AfterSelect);
+            this.treeLibrary.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeLibrary_NodeMouseClick);
+            // 
+            // contextMenuTreeView
+            // 
+            this.contextMenuTreeView.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuTreeView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newViewToolStripMenuItem,
+            this.viewToolStripMenuItem1,
+            this.openInWindowsExporerToolStripMenuItem,
+            this.openTargetProjectFodlerToolStripMenuItem,
+            this.existingProjectToolStripMenuItem});
+            this.contextMenuTreeView.Name = "contextMenuTreeView";
+            this.contextMenuTreeView.Size = new System.Drawing.Size(212, 136);
+            this.contextMenuTreeView.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuTreeView_Opening);
+            // 
+            // newViewToolStripMenuItem
+            // 
+            this.newViewToolStripMenuItem.Name = "newViewToolStripMenuItem";
+            this.newViewToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.newViewToolStripMenuItem.Text = "New";
+            this.newViewToolStripMenuItem.Click += new System.EventHandler(this.newViewToolStripMenuItem_Click);
+            // 
+            // viewToolStripMenuItem1
+            // 
+            this.viewToolStripMenuItem1.Name = "viewToolStripMenuItem1";
+            this.viewToolStripMenuItem1.Size = new System.Drawing.Size(211, 22);
+            this.viewToolStripMenuItem1.Text = "View";
+            // 
+            // openInWindowsExporerToolStripMenuItem
+            // 
+            this.openInWindowsExporerToolStripMenuItem.Name = "openInWindowsExporerToolStripMenuItem";
+            this.openInWindowsExporerToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.openInWindowsExporerToolStripMenuItem.Text = "Open in Windows Exporer";
+            this.openInWindowsExporerToolStripMenuItem.Click += new System.EventHandler(this.openInWindowsExporerToolStripMenuItem_Click);
+            // 
+            // openTargetProjectFodlerToolStripMenuItem
+            // 
+            this.openTargetProjectFodlerToolStripMenuItem.Name = "openTargetProjectFodlerToolStripMenuItem";
+            this.openTargetProjectFodlerToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.openTargetProjectFodlerToolStripMenuItem.Text = "Open Project Folder";
+            this.openTargetProjectFodlerToolStripMenuItem.Click += new System.EventHandler(this.OpenTargetProjectFodlerToolStripMenuItem_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "folder_icon_black.png");
+            this.imageList1.Images.SetKeyName(1, "file_black.png");
+            // 
             // panelManager
             // 
             this.panelManager.BackColor = System.Drawing.Color.White;
@@ -86,7 +167,7 @@
             this.panelManager.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelManager.Location = new System.Drawing.Point(0, 0);
             this.panelManager.Name = "panelManager";
-            this.panelManager.Size = new System.Drawing.Size(711, 449);
+            this.panelManager.Size = new System.Drawing.Size(712, 449);
             this.panelManager.TabIndex = 3;
             // 
             // toolStrip1
@@ -178,65 +259,6 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 40);
             // 
-            // treeLibrary
-            // 
-            this.treeLibrary.ContextMenuStrip = this.contextMenuTreeView;
-            this.treeLibrary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeLibrary.ImageIndex = 0;
-            this.treeLibrary.ImageList = this.imageList1;
-            this.treeLibrary.Location = new System.Drawing.Point(0, 0);
-            this.treeLibrary.Name = "treeLibrary";
-            this.treeLibrary.SelectedImageIndex = 0;
-            this.treeLibrary.Size = new System.Drawing.Size(209, 449);
-            this.treeLibrary.TabIndex = 0;
-            this.treeLibrary.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeLibrary_AfterSelect);
-            this.treeLibrary.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeLibrary_NodeMouseClick);
-            // 
-            // contextMenuTreeView
-            // 
-            this.contextMenuTreeView.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuTreeView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newViewToolStripMenuItem,
-            this.viewToolStripMenuItem1,
-            this.openInWindowsExporerToolStripMenuItem,
-            this.openTargetProjectFodlerToolStripMenuItem});
-            this.contextMenuTreeView.Name = "contextMenuTreeView";
-            this.contextMenuTreeView.Size = new System.Drawing.Size(212, 92);
-            // 
-            // newViewToolStripMenuItem
-            // 
-            this.newViewToolStripMenuItem.Name = "newViewToolStripMenuItem";
-            this.newViewToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.newViewToolStripMenuItem.Text = "New";
-            this.newViewToolStripMenuItem.Click += new System.EventHandler(this.newViewToolStripMenuItem_Click);
-            // 
-            // viewToolStripMenuItem1
-            // 
-            this.viewToolStripMenuItem1.Name = "viewToolStripMenuItem1";
-            this.viewToolStripMenuItem1.Size = new System.Drawing.Size(211, 22);
-            this.viewToolStripMenuItem1.Text = "View";
-            // 
-            // openInWindowsExporerToolStripMenuItem
-            // 
-            this.openInWindowsExporerToolStripMenuItem.Name = "openInWindowsExporerToolStripMenuItem";
-            this.openInWindowsExporerToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.openInWindowsExporerToolStripMenuItem.Text = "Open in Windows Exporer";
-            this.openInWindowsExporerToolStripMenuItem.Click += new System.EventHandler(this.openInWindowsExporerToolStripMenuItem_Click);
-            // 
-            // openTargetProjectFodlerToolStripMenuItem
-            // 
-            this.openTargetProjectFodlerToolStripMenuItem.Name = "openTargetProjectFodlerToolStripMenuItem";
-            this.openTargetProjectFodlerToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.openTargetProjectFodlerToolStripMenuItem.Text = "Open Project Folder";
-            this.openTargetProjectFodlerToolStripMenuItem.Click += new System.EventHandler(this.OpenTargetProjectFodlerToolStripMenuItem_Click);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "folder_icon_black.png");
-            this.imageList1.Images.SetKeyName(1, "file_black.png");
-            // 
             // menuStrip2
             // 
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
@@ -293,24 +315,12 @@
             this.StatuslblMain.Size = new System.Drawing.Size(124, 17);
             this.StatuslblMain.Text = "No changes are found";
             // 
-            // splitContainer1
+            // existingProjectToolStripMenuItem
             // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(3, 43);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeLibrary);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.panelManager);
-            this.splitContainer1.Size = new System.Drawing.Size(924, 449);
-            this.splitContainer1.SplitterDistance = 209;
-            this.splitContainer1.TabIndex = 0;
+            this.existingProjectToolStripMenuItem.Name = "existingProjectToolStripMenuItem";
+            this.existingProjectToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.existingProjectToolStripMenuItem.Text = "Existing Project";
+            this.existingProjectToolStripMenuItem.Click += new System.EventHandler(this.existingProjectToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -324,17 +334,17 @@
             this.Name = "frmMain";
             this.Text = "GenX Dekstop v0.0.0";
             this.panelMain.ResumeLayout(false);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.contextMenuTreeView.ResumeLayout(false);
-            this.menuStrip2.ResumeLayout(false);
-            this.menuStrip2.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.contextMenuTreeView.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -368,6 +378,7 @@
         private System.Windows.Forms.ToolStripMenuItem openInWindowsExporerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openTargetProjectFodlerToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ToolStripMenuItem existingProjectToolStripMenuItem;
     }
 }
 

@@ -29,8 +29,7 @@ namespace GENX.Generator.Builder
             try
             {
                 foreach (IXFile template in projectFile.TemplateList.Where(x=>x.IsActive))
-                {
-                   
+                {                    
                     foreach (TableEntity table in projectFile.TableList)
                     {
                         var temp = template.Clone();

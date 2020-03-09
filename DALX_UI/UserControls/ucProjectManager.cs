@@ -49,6 +49,18 @@ namespace DALX_UI.UserControls
             this.Dock = DockStyle.Fill;
         }
 
+        public ucProjectManager(frmMain frm,ProjectFile projectFile)
+        {
+            ProjectFile = projectFile;
+            InitializeComponent();
+            this.frmMain = frm;
+            LoadManager();
+
+            builderManager = new BuilderManager(this.ProjectFile);
+            _extensionManager = new ExtensionManager(this.ProjectFile);
+            this.Dock = DockStyle.Fill;
+        }
+
         #endregion
 
         #region Helper Methods
@@ -84,6 +96,7 @@ namespace DALX_UI.UserControls
                 AddProjectChanges();
                 this.Cursor = Cursors.Default;
             }
+            if(ProjectFile == null)
             this.ProjectFile = new ProjectFile();
             this.ProjectFile.Path = this.frmMain.BuildCurrentPath();
             this.ProjectFile.ProjectName = this.frmMain.ProjectSelected;
