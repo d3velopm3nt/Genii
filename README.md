@@ -5,7 +5,7 @@ The DALMAPPER solution is made up of 2 main features.
 
 2. GenX - This is a code generator that can be connected to a SQL Server Database to select tables that you want to generate code for. The application lets you generate multiple templates on one table that can be edited and re generated anytime.
 
- ## Temlates 
+ ## Templates 
 
 This can be any type of text file that you want to generate for selected tables in the database. You can add different keywords in the template file to replace with the correct information.
 keywords
