@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GENX</RootNamespace>
     <AssemblyName>GENX</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -55,7 +55,6 @@
     <Compile Include="Extensions\ExtensionFile.cs" />
     <Compile Include="Extensions\ExtensionManager.cs" />
     <Compile Include="Files\CSharpFile.cs" />
-    <Compile Include="Files\ExistingFile.cs" />
     <Compile Include="Files\HtmlFile.cs" />
     <Compile Include="Files\StringExtensions.cs" />
     <Compile Include="Files\TypescriptFile.cs" />

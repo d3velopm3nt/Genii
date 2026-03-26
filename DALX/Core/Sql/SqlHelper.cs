@@ -45,7 +45,7 @@ namespace DALX.Core.Sql
 
         public static DataView SelectTableRelationships(string TableName)
         {
-            //"Select Table_Name FROM INFORMATION_SCHEMA.TABLES where Table_Name in (select Replace(Column_Name, 'ID', '') from INFORMATION_SCHEMA.Columns where TABLE_NAME = '" + TableName + "')";
+           // string query = "Select Table_Name FROM INFORMATION_SCHEMA.TABLES where Table_Name in (select Replace(Column_Name, 'ID', '') from INFORMATION_SCHEMA.Columns where TABLE_NAME = '" + TableName + "')";
 
             string query = "SELECT t.name AS FKTableName , pc.name AS FKColumn, rt.name AS ReferencedTable " +
             "FROM sys.foreign_key_columns AS fkc " +

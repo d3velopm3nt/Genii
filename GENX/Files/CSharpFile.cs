@@ -50,7 +50,7 @@ namespace GENX.Files
                 case "timestamp":
                 case "datetime":
                 case "datetime2":
-                    datatype = "DateTime";
+                    datatype = "DateTime?";
                     break;
                 case "real":
                     datatype = "decimal";

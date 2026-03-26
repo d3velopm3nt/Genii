@@ -67,8 +67,7 @@ namespace DALX.Core
         {
             return new List<string>()
             {
-                "ID",
-                "Status"
+                "ID" 
             };
         }
 

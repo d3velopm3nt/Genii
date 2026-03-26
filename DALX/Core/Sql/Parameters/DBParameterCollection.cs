@@ -12,13 +12,14 @@ namespace DALX.Core.Sql.Parameters
 
         public void Add(DBParameter parameter)
         {
-            if (!Parameters.Contains(parameter))
+
+            if (Parameters != null && !Parameters.Contains(parameter))
                 this.Parameters.Add(parameter);
         }
 
         public void Remove(DBParameter parameter)
         {
-            if (Parameters.Contains(parameter))
+            if (Parameters != null &&  Parameters.Contains(parameter))
                 this.Parameters.Remove(parameter);
         }
     }

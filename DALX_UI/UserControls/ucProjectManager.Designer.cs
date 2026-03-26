@@ -58,6 +58,7 @@
             this.DT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnGenEx = new System.Windows.Forms.Button();
             this.dgvExtensions = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,7 +68,6 @@
             this.btnConfigure = new System.Windows.Forms.Button();
             this.btnSaveChanges = new System.Windows.Forms.Button();
             this.lblSaveChanges = new System.Windows.Forms.Label();
-            this.btnGenEx = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -380,6 +380,16 @@
             this.tabPage4.Text = "Extensions";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // btnGenEx
+            // 
+            this.btnGenEx.Location = new System.Drawing.Point(9, 6);
+            this.btnGenEx.Name = "btnGenEx";
+            this.btnGenEx.Size = new System.Drawing.Size(148, 23);
+            this.btnGenEx.TabIndex = 11;
+            this.btnGenEx.Text = "Generate Extensions";
+            this.btnGenEx.UseVisualStyleBackColor = true;
+            this.btnGenEx.Click += new System.EventHandler(this.btnGenEx_Click);
+            // 
             // dgvExtensions
             // 
             this.dgvExtensions.AllowUserToAddRows = false;
@@ -453,7 +463,6 @@
             this.btnSaveChanges.TabIndex = 9;
             this.btnSaveChanges.Text = "Save Changes";
             this.btnSaveChanges.UseVisualStyleBackColor = true;
-            this.btnSaveChanges.Visible = false;
             this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
             // lblSaveChanges
@@ -465,16 +474,6 @@
             this.lblSaveChanges.TabIndex = 10;
             this.lblSaveChanges.Text = "Save Results";
             this.lblSaveChanges.Visible = false;
-            // 
-            // btnGenEx
-            // 
-            this.btnGenEx.Location = new System.Drawing.Point(9, 6);
-            this.btnGenEx.Name = "btnGenEx";
-            this.btnGenEx.Size = new System.Drawing.Size(148, 23);
-            this.btnGenEx.TabIndex = 11;
-            this.btnGenEx.Text = "Generate Extensions";
-            this.btnGenEx.UseVisualStyleBackColor = true;
-            this.btnGenEx.Click += new System.EventHandler(this.btnGenEx_Click);
             // 
             // ucProjectManager
             // 

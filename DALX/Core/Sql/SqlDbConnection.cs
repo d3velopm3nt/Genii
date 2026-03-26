@@ -11,6 +11,7 @@ namespace DALX.Core.Sql
    public class SqlDbConnection
     {
         private string _connectionString;
+        public string ConnectionString { get; set; }
         public SqlDbConnection()
         {
 
@@ -377,7 +378,6 @@ namespace DALX.Core.Sql
 
         public DataView GetDataView(string query)
         {
-            var tries = 3;
             var source = new TaskCompletionSource<DataTable>();
             var table = new DataTable();
             while (true)
@@ -414,10 +414,9 @@ namespace DALX.Core.Sql
                 catch (Exception e)
                 {
                     Console.WriteLine("Exception at query: " + query);
-                    if (tries-- <= 0)
-                    {
+                   
                         throw;
-                    }
+                    
                 }
                 return new DataView(table);
             }

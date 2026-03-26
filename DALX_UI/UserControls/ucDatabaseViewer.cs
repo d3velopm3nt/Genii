@@ -20,6 +20,7 @@ namespace DALX_UI.UserControls
         private frmMain frmMain { get; set; }
         private ucProjectManager ProjectManager { get; set; }
         private frmTableManager TableManager { get; set; }
+       public List<TableEntity> TableList = new List<TableEntity>();
         #endregion
 
         #region Constructors
@@ -55,7 +56,7 @@ namespace DALX_UI.UserControls
                 dgvTables.Rows.Clear();
                 foreach(string table in SqlHelper.SelectAllDatabaseTables())
                 {
-                    int count = SqlHelper.SelectTableRelationships(table).Count;
+                    int count = 0;//SqlHelper.SelectTableRelationships(table).Count;
                     if (ProjectManager.ProjectFile.TableList.Where(x => x.TableName == table).Any())
                         dgvTables.Rows.Add(table, count, true);
                     else
@@ -70,16 +71,16 @@ namespace DALX_UI.UserControls
 
         public List<TableEntity> GetTableList()
         {
-            List<TableEntity> tableList = new List<TableEntity>();
+           
             for(int i=0;i<dgvTables.Rows.Count;i++)
             {
                 if ((bool)dgvTables.Rows[i].Cells[2].Value == true)
                 {
                     var table = new TableEntity(dgvTables.Rows[i].Cells[0].Value.ToString());
-                    tableList.Add(table);
+                    TableList.Add(table);
                 }
             }
-            return tableList;
+            return TableList;
         }
 
         #endregion

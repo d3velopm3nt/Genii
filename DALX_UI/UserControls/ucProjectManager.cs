@@ -113,9 +113,9 @@ namespace DALX_UI.UserControls
 
         public void AddProjectChanges()
         {
-            if (hasChanges)
-            {
+            
                 //Add Tables to Project TableList
+                //if(DatabaseViewer.TableList.Count == 0)
                 ProjectFile.TableList = DatabaseViewer.GetTableList();
                 //Add Templates to Project TemplateList
                 ProjectFile.TemplateList = GetTemplateList();
@@ -125,7 +125,7 @@ namespace DALX_UI.UserControls
                 hasChanges = false;
                 frmMain.UpdateStatus("Project up to date");
 
-            }
+            
         }
 
         private List<IXFile> GetTemplateList()
@@ -138,6 +138,7 @@ namespace DALX_UI.UserControls
                    string fileExt = dgvTemplates.Rows[i].Cells[0].Value.ToString();
                     IXFile file = LanguageHelper.GetFileFromExtention(fileExt,ProjectFile);
                     file.FileName = fileExt;
+                    file.FullPath = this.frmMain.BuildCurrentPath() + "\\" +  fileExt;
                     file.TargetPath = dgvTemplates.Rows[i].Cells[1].Value.ToString();
                     file.IsActive = Convert.ToBoolean( dgvTemplates.Rows[i].Cells[2].Value);
                     list.Add(file);
@@ -208,7 +209,8 @@ namespace DALX_UI.UserControls
         private void LoadGenerateGridList()
         {
             dgvGenerateFiles.Rows.Clear();
-            foreach (IXFile template in ProjectFile.TemplateList)
+            var activeTemplates = ProjectFile.TemplateList.Where(x => x.IsActive);
+            foreach (IXFile template in activeTemplates)
             {
                 foreach (TableEntity table in ProjectFile.TableList)
                 {
@@ -222,7 +224,7 @@ namespace DALX_UI.UserControls
             dgvExtensions.Rows.Clear();
             foreach(var extension in Extensions)
             {
-                dgvExtensions.Rows.Add(extension.FilePath, extension.Extensions.Count.ToString());
+                dgvExtensions.Rows.Add(extension.FilePath.Substring(extension.FilePath.LastIndexOf("\\") + 1), extension.Extensions.Count.ToString());
             }
         }
 
@@ -323,10 +325,18 @@ namespace DALX_UI.UserControls
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
-        {           
+        {
+            try
+            {
+
             this.builderManager.GenerateTemplateTableFiles(this);
 
-            this._extensionManager.RunExtensions();
+           // this._extensionManager.RunExtensions();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         #endregion
 

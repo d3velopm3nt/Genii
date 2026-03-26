@@ -65,7 +65,9 @@ namespace DALX.Mapping
                             Name = "@" + fieldName,
                             Value = value
                         };
-                        collection.Add(dbParam);
+                        if (collection.Parameters == null)
+                            collection.Parameters = new List<DBParameter>();
+                        collection.Parameters.Add(dbParam);
 
                     }
                 }

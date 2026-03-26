@@ -18,6 +18,7 @@ namespace DALX_UI.UserControls
     {
         #region Properties
         private frmMain frmMain { get; set; }
+        private List<Control> files { get; set; } = new List<Control>();
         #endregion
 
         #region Constructors
@@ -25,7 +26,7 @@ namespace DALX_UI.UserControls
         {
             InitializeComponent();
             this.frmMain = form1;
-            this.AddNewTextEditor(this.frmMain.CurrentSelectNodeText);
+           // this.AddNewTextEditor(this.frmMain.CurrentSelectNodeText);
             if (frmMain.XFileSelected != "")
             {
                 OpenFiles(new string[] { frmMain.BuildCurrentPath() });
@@ -66,8 +67,9 @@ namespace DALX_UI.UserControls
                     page.BeginInvoke(new Action<TabPage>(p => p.Controls[0].Focus()), page);
                 });
             tab.Controls.Add(editor);
+            files.Insert(0,tab);
+            UpdateTabs();
 
-            fileTabs.Controls.Add(tab);
 
             if (_editorSettings == null)
             {
@@ -77,6 +79,15 @@ namespace DALX_UI.UserControls
             else
                 editor.TextEditorProperties = _editorSettings;
             return editor;
+        }
+
+        private void UpdateTabs()
+        {
+            fileTabs.Controls.Clear();
+            foreach(var file in files)
+            {
+                fileTabs.Controls.Add(file);
+            }
         }
 
         private void menuFileOpen_Click(object sender, EventArgs e)
@@ -130,6 +141,7 @@ namespace DALX_UI.UserControls
         private void RemoveTextEditor(TextEditorControl editor)
         {
             ((TabControl)editor.Parent.Parent).Controls.Remove(editor.Parent);
+            this.files.Remove(editor.Parent);
         }
 
         private void menuFileSave_Click(object sender, EventArgs e)

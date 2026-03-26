@@ -168,6 +168,7 @@ namespace DALX_UI
             toolItemFolder.Visible = true;
             toolStripSeparator4.Visible = true;
             toolStripSeparator5.Visible = false;
+           
             XFolderSelected = name;
             XFileSelected = "";
         }
@@ -180,25 +181,29 @@ namespace DALX_UI
             XFileSelected = name;
         }
 
-        private void BuildMenu(TreeNode node)
+        private bool BuildMenu(TreeNode node)
         {
             CurrentSelectedNodeIndex = node.Level;
+
             if (node.Level == 2)
             {
                 SetSolution(node.Text);
-                
+                return true;
+
             }
             else if (node.Level == 3)
             {
                 SetSolution(node.Parent.Text);
                 SetProject(node.Text);
-
+                return true;
             }
             else if (node.Level == 4)
             {
                 SetSolution(node.Parent.Parent.Text);
+
                 SetProject(node.Parent.Text);
                 SetXFolder(node.Text);
+                return true;
             }
             else if (node.Level == 5)
             {
@@ -206,7 +211,9 @@ namespace DALX_UI
                 SetProject(node.Parent.Parent.Text);
                 SetXFolder(node.Parent.Text);
                 SetXFile(node.Text);
+                return true;
             }
+            else return false;
         }
 
 
@@ -222,11 +229,13 @@ namespace DALX_UI
                 if (TextEditor == null)
                 {
                     TextEditor = new ucTextEditor(this);
+                    this.TextEditor.OpenFiles(new string[] { BuildCurrentPath() });
                     this.panelManager.Controls.Add(TextEditor);
+
                 }
                 else
                 {
-                    this.TextEditor.OpenFiles(new string []{ BuildCurrentPath()});
+                    this.TextEditor.OpenFiles(new string[] { BuildCurrentPath() });
                     this.panelManager.Controls.Add(TextEditor);
                 }
             }
@@ -242,7 +251,10 @@ namespace DALX_UI
                 //Build the Nav Menu
                 BuildMenu(e.Node);
                 //Open Text Editor
-                OpenTextEditor(e.Node);
+                FileAttributes attr = File.GetAttributes(BuildCurrentPath());
+                if ((attr & FileAttributes.Directory) != FileAttributes.Directory)
+                    OpenTextEditor(e.Node);
+
             }
             catch (Exception ex)
             {

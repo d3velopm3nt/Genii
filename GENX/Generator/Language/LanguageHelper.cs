@@ -26,6 +26,8 @@ namespace GENX.Generator.Language
                     language = LanguageList.CSHTML;
                     break; 
                 case "css":
+                case "sass":
+                case "scss":
                     language = LanguageList.CSS;
                     break;
                 case "ts":

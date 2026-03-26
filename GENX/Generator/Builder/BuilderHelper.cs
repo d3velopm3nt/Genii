@@ -11,8 +11,6 @@ using System.Text;
 using GENX.Interfaces;
 using GENX.Generator.Snippet;
 using GENX.Generator.Helpers;
-using GENX.Files;
-using GENX.Core;
 
 namespace GENX.Generator.Builder
 {
@@ -23,7 +21,7 @@ namespace GENX.Generator.Builder
         public static IXFile BuildEntityTemplateFile(IXFile file, TableEntity table, string projectName)
         {
             Table = table;
-            //IXFile file = new TemplateFile();
+            //IXFile file = new TemplateFile();w
 
             //file.Build(template);
             file.ProjectName = projectName;

@@ -39,7 +39,7 @@ namespace GENX.Generator.Table
         {
             this.TableName = tableName;
 
-            this.Relationships = GetTableRelationships();
+          // this.Relationships = GetTableRelationships();
  
         }
         #endregion

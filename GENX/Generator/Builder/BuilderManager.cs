@@ -28,7 +28,7 @@ namespace GENX.Generator.Builder
             projectFile = form.ProjectFile;
             try
             {
-                foreach (IXFile template in projectFile.TemplateList.Where(x=>x.IsActive))
+                foreach (IXFile template in projectFile.TemplateList.Where(x=>x.IsActive).ToList())
                 {                    
                     foreach (TableEntity table in projectFile.TableList)
                     {

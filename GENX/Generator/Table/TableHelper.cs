@@ -32,8 +32,8 @@ namespace GENX.Generator.Table
                         row[0].ToString(),  //Column Name
                         row[1].ToString(),  //Data Type
                         row[2].ToString(),  //Default Value
-                        table.Relationships.Any(x=>x.ColumnName == row[0].ToString()) ? true : false,
-                        table.Relationships.Where(x=>x.ColumnName == row[0].ToString()).FirstOrDefault()?.TableName,
+                       // table.Relationships.Any(x=>x.ColumnName == row[0].ToString()) ? true : false,
+                       // table.Relationships.Where(x=>x.ColumnName == row[0].ToString()).FirstOrDefault()?.TableName,
                         file
                         )) ; 
             }

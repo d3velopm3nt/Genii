@@ -48,6 +48,14 @@ namespace GENX.Generator.Table.Column
             this.IsLinkedProperty = isLinked;
             
         }
+        public ColumnProperty(string columnName, string dataType, string defaultValue, IXFile file)
+        {
+            this.ColumnName = columnName;
+            this.dbType = dataType;
+            this._defaultvalue = defaultValue;
+            this._file = file;
+
+        }
         #endregion
     }
 }
