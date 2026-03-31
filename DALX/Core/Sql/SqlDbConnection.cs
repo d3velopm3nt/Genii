@@ -11,7 +11,13 @@ namespace DALX.Core.Sql
    public class SqlDbConnection
     {
         private string _connectionString;
-        public string ConnectionString { get; set; }
+
+        public string ConnectionString
+        {
+            get { return _connectionString; }
+            set { _connectionString = value; }
+        }
+
         public SqlDbConnection()
         {
 
